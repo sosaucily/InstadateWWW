@@ -1,0 +1,11 @@
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	.ui-icon-gps {
+		background-image: url("../images/gps-new-2x.png");
+		background-size: 18px 18px;
+	}	
+}
+
+.ui-icon-gps {
+	background-image: url("../images/gps-new-2x.png");
+	background-size: 18px 18px;
+}

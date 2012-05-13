@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Instadate test</title>
+	<title>Instadate</title>
   
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 	<meta charset="utf-8">
@@ -11,8 +11,48 @@
 	<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />		
 	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />		
 	-->
-	<!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
-	<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+
+	
+	  <link href="stylesheets/application.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/activities.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/jquery.mobile-1.1.0.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/jquery.mobile.datebox.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/jquery.mobile.actionsheet.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/main.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/photoswipe.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/story.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/woody.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/woody.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/woody_mods.css" media="all" rel="stylesheet" type="text/css" />
+	  <link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:400,700' rel='stylesheet' type='text/css'>
+
+		<!-- JavaScripts -->
+		<!-- If your application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
+		<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+		
+    <script src="javascripts/jquery.js" type="text/javascript"></script>
+	<script src="javascripts/klass.min.js" type="text/javascript"></script>
+	<script src="javascripts/jquery_mobile.js" type="text/javascript"></script>
+	<script src="javascripts/jquery.cycle.all.js" type="text/javascript"></script>
+	<script src="javascripts/code.photoswipe.jquery-3.0.4.min.js" type="text/javascript"></script>
+	<script src="javascripts/jquery.mobile.datebox.min.js" type="text/javascript"></script>
+	<script src="javascripts/jquery.mobile.actionsheet.js" type="text/javascript"></script>
+	<script src="javascripts/story.js" type="text/javascript"></script>
+	<script src="javascripts/application.js" type="text/javascript"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCloHHOTgUAwKqVVpovHVzGioPQ8RkQeTY&sensor=false" type="text/javascript"></script>
+	<script src="javascripts/geolocate.js" type="text/javascript"></script>
+    <script src="cdv-plugin-fb-connect.js" type="text/javascript"></script>
+    <script src="facebook_js_sdk.js" type="text/javascript"></script>
+    <script src="javascripts/misc.js" type="text/javascript"></script>
+<!--
+	  <meta content="authenticity_token" name="csrf-param" />
+	<meta content="zW1mAOUM56AXMKzHF5nRgD5QiTLvWAicWgSVf797huU=" name="csrf-token" /> 
+-->
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="apple-mobile-web-app-capable" content="yes">
+	  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	
+	
     <script type="text/javascript">
 
 
@@ -37,6 +77,15 @@
 	
 	function onBodyLoad()
 	{		
+		document.addEventListener('deviceready', function() {
+			try {
+			alert('Device is ready! Make sure you set your app_id below this alert.');
+			FB.init({ appId: '322572417779217', nativeInterface: CDV.FB, useCachedDialogs: false });
+			document.getElementById('data').innerHTML = "";
+			} catch (e) {
+			//alert(e);
+			}
+			}, false);
 		document.addEventListener("deviceready", onDeviceReady, false);
 	}
 	
@@ -47,18 +96,519 @@
 	function onDeviceReady()
 	{
 		// do your thing!
-		navigator.notification.alert("Cordova is working")
+		//navigator.notification.alert("Cordova is working")
 	}
-    
+	
     </script>
   </head>
   <body onload="onBodyLoad()">
-	<h1>Hey, it's Cordova!</h1>
-	<p>Don't know how to get started? Check out our <em><a target="_blank" href="http://docs.phonegap.com/en/edge/guide_getting-started_ios_index.md.html#Getting%20Started%20with%20iOS">Getting Started Guide</a></em>
-	<br />
-	<ol>
-		<li>Check your console log for any white-list rejection errors.</li>
-		<li>Add your allowed <strong>hosts</strong> in Cordova.plist/ExternalHosts (wildcards OK, don't enter the URL scheme)</li>
-	</ol>
+	<!-- HOMEPAGE -->
+	<div data-role="page" id="homepage" data-title="Homepage">
+
+	<!-- Wrapper -->
+	<div class="wrapper">
+	    <!-- Logo -->	
+		<div class="logo">
+	        <img src="images/instadate-logo.png"  alt="Instadate">
+	    </div><!--END OF: Logo -->
+	    <div data-role="content" class="content" data-theme="a" style="margin-top:0px">
+	    	<div id="shareData"><h2>Share this Date!</h2>
+			    <a data-role="button" id="facebookShareButton2" href="#">Facebook</a>
+			    <a data-role="button" href="#">Twitter</a>
+			    <a data-role="button" href="#">Email</a>
+			    <br/>
+			    <!-- This close button is optional. The widget also closes if you click or touch outside of the popup -->
+			    <a data-role="button" data-rel="close" href="#">Cancel</a>
+			</div>
+		    <form id="story_form" >
+		        <label for="zip_search" style="margin-bottom:-3px;">Where is your date?</label>
+		<!--
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><input type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
+					<div class="ui-block-b"><a id="findme" href="#" data-role="button" data-icon="gps" data-theme="a">Near me</a></div>
+				</div><!-- -->
+
+				<div class="insta-zip-col1"><input type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
+				<div class="insta-zip-col2"><a id="findme" href="#" data-role="button" data-icon="gps" data-mini="true" data-theme="a">Near me</a></div>
+	<!-- -->
+				<input type="text" name="zip_search" id="zip_search" value="" style="display:none;" />
+				<input type="text" name="lat_search" id="lat_search" value="" style="display:none;" />
+				<input type="text" name="lng_search" id="lng_search" value="" style="display:none;" />
+	            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:25px; margin-top:2px;">
+		            <input type="radio" name="activity" id="radiobtn-1" checked="checked" value="anything" />
+		            <label for="radiobtn-1">Anything</label>
+		            <input type="radio" name="activity" id="radiobtn-2" value="outdoor" />
+		            <label for="radiobtn-2">Outdoor</label>
+		            <input type="radio" name="activity" id="radiobtn-3" value="indoor" />
+		            <label for="radiobtn-3">Indoor</label>
+		        </fieldset>
+	<!--
+				<label for="raining_switch">Raining?</label>
+				<select name="raining" id="raining_switch" data-role="slider" data-theme="a">
+					<option value="false">It's Dry</option>
+					<option value="true">It's Wet</option>
+				</select>
+	        -->
+
+	        	<br />
+		        <label for="story_date">When is your date?</label>
+				<div>
+					<input name="story_date" id="story_date" type="date" data-role="datebox"
+				   		data-options='{"mode": "calbox","afterToday":true,"calTodayButton":true, "defaultDate":"2013-01-01"}' />
+				</div>
+				<!--Change mode:datebox to mode:calbox for full cal view-->
+	<!--	        <div data-role="fieldcontain" class="filter daypart"> -->
+		          <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:60px; margin-top:5px;">
+		            <input type="radio" name="daypart" id="radiobtn-4" value="day" />
+		            <label for="radiobtn-4">Daytime</label>
+		            <input type="radio" name="daypart" id="radiobtn-5" checked="checked" class="ui-btn-active" class="" value="evening" />
+		            <label for="radiobtn-5">Evening</label>
+		          </fieldset>
+	<!--	        </div> -->
+				<br />
+				<a href="#story" data-transition="flip" id="story_submit" data-role="button" data-theme="b">Plan my Date!</a>
+			</form>
+		</div><!--END OF: Home form content section -->
+
+	    <!-- Social Media-->
+	<!--
+	    <div class="social-media">
+	        <a class="twitter" href="#"><img src="images/twitter.png" /></a>
+	        <a class="facebook" href="#"><img src="images/facebook.png" /></a>
+	        <a class="rss" href="#"><img src="images/rss.png" /></a>
+	    </div>
+	-->
+	<!--END OF: Social Media -->
+
+	</div><!--END OF: Wrapper -->
+	   <!-- Footer -->
+	<div data-role="footer" class="footer">
+	       <h4>Copyright 2012, Instadate - <a href="#" id="opensharedialog" data-role="actionsheet" data-sheet="shareData">Share</a></h4>
+	</div><!-- END OF: Footer -->
+	<script type="text/javascript"> 
+	  $(function() {
+		$('#story_submit').click (function() {
+			console.log ("wee " + document.URL );
+			$.ajax({
+			  type: 'post',
+			  data: $("#story_form").serialize(),
+			  headers: {
+			    'X-CSRF-Token': '<%= form_authenticity_token.to_s %>'
+			  },
+			  success: function(data) {
+				initialize_story(data);
+			  },
+			  url: "http://localhost:3000/story/create"
+			});
+		});
+		
+		
+	  });
+	</script>
+	</div><!-- END OF: Homepage -->
+
+
+
+
+	<!-- STORY -->
+	<div data-role="page" id="story" data-title="Story">
+	<!--	<div id="story-page" data-role="page" class="page"> -->
+
+
+	    <!-- Header -->
+	    <div data-role="header" class="chapter-header">
+	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip">Back</a> 
+	       <h4>Your Date</h4>
+	    </div><!-- END OF: Header -->
+
+	    <!-- Wrapper -->
+	<!--    <div class="wrapper"> -->
+
+		        <!-- Content -->
+		<div data-role="content" class="content" id="temp_content" style="height:0;width:0;padding:0;margin:0;">
+			<div id="shareData2" ><h4>Share this Date!</h4>
+			    <a data-role="button" id="facebookShareButton" href="#">Facebook</a>
+			    <a data-role="button" href="#">Twitter</a>
+			    <a data-role="button" href="#">Email</a>
+			    <br/>
+			    <!-- This close button is optional. The widget also closes if you click or touch outside of the popup -->
+			    <a data-role="button" data-rel="close" href="#">Cancel</a>
+			</div>
+		</div>
+					<div id="story_list" class="story_list" >
+
+					</div>
+
+	<!--    </div><!--END OF: Wrapper -->
+
+	    <!-- Footer -->
+		<div data-role="footer" class="chapter-footer">
+	        <h4>Copyright 2012, Instadate - <a href="#" id="opensharedialog2" data-role="actionsheet" data-sheet="shareData2">Share</a></h4>
+		</div><!-- END OF: Footer -->
+
+	</div><!-- END OF: Story -->
+
+	<!-- SHARE MODAL -->
+	<div data-role="page" id="share" data-title="Share" style="height:100px;">
+
+	    <!-- Wrapper -->
+		<div class="wrapper"> -->
+
+			<!-- Content -->
+			<div data-role="content" class="content"> -->
+				<div id="story_list" class="story_list" >
+					HI
+				</div>
+			</div><!-- END OF: Content -->
+
+		</div><!--END OF: Wrapper -->
+
+	</div><!-- END OF: Story -->
+
+
+
+	<!-- ABOUT -->
+	<div data-role="page" id="about" data-title="About">
+
+	    <!-- Header -->
+	    <div data-role="header" class="header">
+	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip">Back</a> 
+	       <h4>About us</h4>
+	    </div><!-- END OF: Header -->
+
+
+	    <!-- Wrapper -->
+	    <div class="wrapper">
+
+	        <!-- Slider-->
+	        <div class="slider" style="margin-bottom: 25px;">
+	            <img src="images/about.jpg" />
+	        </div><!--END OF: Slider -->
+
+	        <!-- Content -->
+	        <div data-role="content" class="content">
+	            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	        </div><!-- END OF: Content -->
+
+	        <div data-role="collapsible-set" data-theme="b" data-content-theme="b">
+	            <div data-role="collapsible" data-theme="b" data-content-theme="b">
+	                <h3>Headings</h3>
+
+	                <h1>H1 Heading</h1>
+	                <h2>H2 Heading</h2>
+	                <h3>H3 Heading</h3>
+	                <h4>H4 Heading</h4>
+	                <h5>H5 Heading</h5>
+	            </div>
+
+	            <div data-role="collapsible" data-theme="b" data-content-theme="b">
+	                <h3>Buttons</h3>
+	                <a href="#" data-role="button" data-inline="true" data-icon="delete">Delete </a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="arrow-r">Next </a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="arrow-l">Back </a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="arrow-u">Up </a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="arrow-d">Down </a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="plus">Plus </a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="minus">Minus</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="check">Check</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="gear">Settings</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="refresh">Refresh</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="forward">Forward</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="back">Backward</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="grid">Grid</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="star">Star</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="alert">Alert</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="info">Info</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="home">Home</a>
+	                <a href="#" data-role="button" data-inline="true" data-icon="search">Search</a>
+
+	                <br />
+	                <a href="#" data-role="button" data-inline="true">Simple button</a>
+
+	                <a href="#" data-role="button" data-inline="true">Cancel</a>
+	                <a href="#" data-role="button" data-inline="true" data-theme="b">Save</a>           
+
+	            </div>
+	        </div>
+
+
+
+	    </div><!--END OF: Wrapper -->
+
+	    <!-- Footer -->
+		<div data-role="footer" class="footer">
+	        <h4>Copyright 2012, Instadate</h4>
+		</div><!-- END OF: Footer -->
+
+	</div><!-- END OF: About -->
+
+
+	<!-- BLOG -->
+	<div data-role="page" id="blog" data-title="Blog">
+
+	    <!-- Header -->
+	    <div data-role="header" class="header">
+	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip">Back</a> 
+	       <h4>Blog</h4>
+	    </div><!-- END OF: Header -->
+
+
+	    <!-- Wrapper -->
+	    <div class="wrapper">
+
+	        <!--Posts -->
+	        <ul data-role="listview" data-inset="true">
+	            <!-- Post -->
+	            <li>
+	                <a href="#post">
+	                    <img src="images/thumb/001.jpg" />
+	                    <h3>First Post</h3>
+	                    <p>Sample short description</p>
+	                </a>
+	            </li><!-- END OF: Post -->
+
+	            <!-- Post -->
+	            <li>
+	                <a href="#post">
+	                    <img src="images/thumb/002.jpg" />
+	                    <h3>Second Post</h3>
+	                    <p>Here is a description</p>
+	                </a>
+	            </li><!-- END OF: Post -->
+
+	            <!-- Post -->
+	            <li>
+	                <a href="#post">
+	                    <img src="images/thumb/003.jpg" />
+	                    <h3>Third Post</h3>
+	                    <p>Made of wood textures</p>
+	                </a>
+	            </li><!-- END OF: Post -->
+
+	            <!-- Post -->
+	            <li>
+	                <a href="#post">
+	                    <img src="images/thumb/004.jpg" />
+	                    <h3>Fourth Post</h3>
+	                    <p>Woody mobile template</p>
+	                </a>
+	            </li><!-- END OF: Post -->
+	            <!-- Post -->
+	            <li>
+	                <a href="#post">
+	                    <img src="images/thumb/005.jpg" />
+	                    <h3>Last Post</h3>
+	                    <p>Here goes some description</p>
+	                </a>
+	            </li><!-- END OF: Post -->
+	        </ul><!-- END OF: Posts -->
+
+	        <fieldset class="ui-grid-a">
+	            <div class="ui-block-a"><a href="#" data-role="button">&laquo; Newer</a></div>
+	            <div class="ui-block-b"><a href="#" data-role="button">Older &raquo; </a></div>	   
+	        </fieldset>
+
+	    </div><!--END OF: Wrapper -->
+
+	    <!-- Footer -->
+		<div data-role="footer" class="footer">
+	        <h4>Copyright 2012, Instadate</h4>
+		</div><!-- END OF: Footer -->
+
+	</div><!-- END OF: Blog -->
+
+
+	<!-- Post -->
+	<div data-role="page" id="post" data-title="Blog Post">
+
+	    <!-- Header -->
+	    <div data-role="header" class="header">
+	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip">Back</a> <h4>Blog Post</h4>
+	    </div><!-- END OF: Header -->
+
+	    <div class="wrapper">
+	        <!-- Content -->
+	        <div data-role="content" class="content">
+	        <h2>Welcome to Woody blog!</h2>
+
+					<p><em>Posted 24th January 2012 by Art</em></p>	
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br /><br />
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+					nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					pariatur. </p>
+	        </div><!-- END OF: Header -->
+
+					<div data-role="collapsible" data-content-theme="a" data-theme="a" id="comment-form-collapsible">
+						<h3>Leave Comment</h3>
+						<div id="comment-form-wrapper">
+
+							<form action="#" method="post" id="comment-form">
+								<div data-role="fieldcontain" class="ui-hide-label no-field-separator">
+									<label for="name">Name (required)</label>
+								    <input type="text" id="name" name="name" placeholder="Name (required)" class="required" />
+								</div>
+								<div data-role="fieldcontain" class="ui-hide-label no-field-separator">	
+									<label for="email">Email (optional)</label>
+								    <input type="email" id="email" name="email" placeholder="Email (optional)" class="email"/>
+
+								</div>
+								<div data-role="fieldcontain" class="ui-hide-label no-field-separator">	
+									<label for="comment">Comment (required)</label>
+									<textarea name="textarea" id="comment" placeholder="Leave your comment here" class="required"></textarea>
+								</div>
+									<button type="submit" id="submit">Submit Comment</button>
+							</form>
+						</div>
+
+						<div id="comment-form-success"></div>
+					</div>	
+					<div data-role="collapsible" data-content-theme="a" data-theme="a">
+					   <h3>View Comments</h3>
+					   		<ul style="list-style: none;">
+						   	 	<li>
+										<h3>Art Ramadani</h3>
+
+							   	 		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+							   	 		<span class="blog-comment-date">15.35pm 24th Jan 2012</span>
+							  	  		<a href="#">Reply &rarr;</a>
+						   	 	</li>
+
+								<hr/>
+
+						   	 	<li>
+										<h3>Arlind Nushi</h3>
+							   	 		<p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+							   	 		<span class="blog-comment-date">15.35pm 24th Jan 2012</span>
+							  	  		<a href="#">Reply &rarr;</a>
+						   	 	</li>
+
+							</ul>
+					</div>
+	    </div>
+
+	</div><!-- END OF: Post -->
+
+	<!-- Portfolio -->
+	<div data-role="page" id="portfolio" data-title="Portfolio">
+
+	    <!-- Header -->
+	    <div data-role="header" class="header">
+	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip">Back</a> <h4>Portfolio</h4>
+	    </div><!-- END OF: Header -->
+
+		<!-- Portfolio -->
+		<ul id="gallery" class="gallery">
+			<li><a rel="external" href="images/full/001.jpg"><img src="images/thumb/001.jpg" alt="Image 001" /></a></li>
+			<li><a rel="external" href="images/full/002.jpg"><img src="images/thumb/002.jpg" alt="Image 002" /></a></li>
+			<li><a rel="external" href="images/full/003.jpg"><img src="images/thumb/003.jpg" alt="Image 003" /></a></li>
+			<li><a rel="external" href="images/full/004.jpg"><img src="images/thumb/004.jpg" alt="Image 004" /></a></li>
+			<li><a rel="external" href="images/full/005.jpg"><img src="images/thumb/005.jpg" alt="Image 005" /></a></li>
+			<li><a rel="external" href="images/full/006.jpg"><img src="images/thumb/006.jpg" alt="Image 006" /></a></li>
+			<li><a rel="external" href="images/full/007.jpg"><img src="images/thumb/007.jpg" alt="Image 007" /></a></li>
+			<li><a rel="external" href="images/full/008.jpg"><img src="images/thumb/008.jpg" alt="Image 008" /></a></li>
+			<li><a rel="external" href="images/full/009.jpg"><img src="images/thumb/009.jpg" alt="Image 009" /></a></li>
+			<li><a rel="external" href="images/full/010.jpg"><img src="images/thumb/010.jpg" alt="Image 010" /></a></li>
+			<li><a rel="external" href="images/full/011.jpg"><img src="images/thumb/011.jpg" alt="Image 011" /></a></li>
+			<li><a rel="external" href="images/full/012.jpg"><img src="images/thumb/012.jpg" alt="Image 012" /></a></li>
+			<li><a rel="external" href="images/full/013.jpg"><img src="images/thumb/013.jpg" alt="Image 013" /></a></li>
+			<li><a rel="external" href="images/full/014.jpg"><img src="images/thumb/014.jpg" alt="Image 014" /></a></li>
+			<li><a rel="external" href="images/full/015.jpg"><img src="images/thumb/015.jpg" alt="Image 015" /></a></li>
+			<li><a rel="external" href="images/full/016.jpg"><img src="images/thumb/016.jpg" alt="Image 016" /></a></li>
+			<li><a rel="external" href="images/full/017.jpg"><img src="images/thumb/017.jpg" alt="Image 017" /></a></li>
+			<li><a rel="external" href="images/full/018.jpg"><img src="images/thumb/018.jpg" alt="Image 018" /></a></li>
+		</ul><!-- END OF: Portfolio -->
+
+
+
+	    <!-- Footer -->
+		<div data-role="footer" class="footer">
+	        <h4>Copyright 2012, Instadate</h4>
+		</div><!-- END OF: Footer -->
+
+	</div><!-- END OF: Portfolio -->
+
+	<!-- Contact -->
+	<div data-role="page" id="contact" data-title="Contact">
+
+	    <!-- Header -->
+	    <div data-role="header" class="header">
+	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip">Back</a> <h4>Contact</h4>
+	    </div><!-- END OF: Header -->
+
+		<!--Wrapper -->
+		<div class="wrapper">
+
+	        <!-- Map -->
+	        <div class="map_container" style="margin-bottom: 25px;">
+	            <div id="the_map"></div>
+	        </div><!--END OF: Map -->
+
+	  		<!-- Address and Phone -->
+	        <ul data-role="listview" data-theme="a" data-inset="true">
+	            <li><img src="images/pin.png" alt="Location" class="ui-li-icon">Galaxy avenue, New York, U.S</li>
+	            <li><img src="images/phone.png" alt="Phone" class="ui-li-icon">+1 23 4567-256</li>
+	        </ul>  <!-- END OF: Address and Phone -->
+
+	        <div data-role="content" class="content" data-theme="a" style="margin-top:25px">
+				<form>
+	                <label for="name">Name:</label>
+	                <input type="text" name="name" id="name" value=""  />
+
+	                <br />
+
+	                <label for="email">Email:</label>
+	                <input type="text" name="email" id="email" value=""  />
+
+	                <br />
+
+	                <label for="textarea">Email:</label>
+	                <textarea name="textarea" id="textarea"></textarea>
+
+	                <br />
+
+	               <label for="state" class="select">From:</label>
+	               <select name="state" id="state">
+	                  <option value="africa">Africa</option>
+	                  <option value="americas">Americas</option>
+	                  <option value="asia">Asia</option>
+	                  <option value="australia">Australia</option>
+	                  <option value="europe">Europe</option>
+	               </select>
+
+	                <br />
+
+	                <a href="#thankyou" data-rel="dialog" data-transition="pop" data-role="button" data-inline="true" data-theme="b">Send</a>           
+	                <a href="#" data-role="button" data-inline="true">Reset</a>
+
+				</form>  
+	        </div> 		
+
+	    </div><!-- END OF: Wrapper -->
+
+	    <!-- Footer -->
+		<div data-role="footer" class="footer">
+	        <h4>Copyright 2012, Instadate</h4>
+		</div><!-- END OF: Footer -->
+
+	</div><!-- END OF: Contact -->
+
+	<!-- Thank You Message -->
+	<div data-role="page" id="thankyou" data-title="Thank You">
+
+	    <!-- Header -->
+	    <div data-role="header" class="header">
+	       <h4>Thank You</h4>
+	    </div><!-- END OF: Header -->
+
+	    <!-- Content -->
+	    <div data-role="content" class="dialog">
+	       Thank you for contacting us, we will reply as soon as possible.
+	    </div><!-- END OF: Content -->
+
+
+	</div><!-- END OF: Thank You Message -->
+
   </body>
 </html>
