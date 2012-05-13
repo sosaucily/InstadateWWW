@@ -1,2 +1,9 @@
 Instadate WWW code!
 The HTML / CSS / JS code for the instadate product.
+
+This project is intended to be included as a submodule to the other application projects for Instadate
+
+The other Instadate applications (Mobile web, Iphone, Android (coming soon)) use this project as the actual content of the application.  
+Thus, one code base for multiple devices and formats.
+
+You can clone this project in a separate shared folder to work on it.
