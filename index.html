@@ -196,9 +196,9 @@
 			    'X-CSRF-Token': '<%= form_authenticity_token.to_s %>'
 			  },
 			  success: function(data) {
-				initialize_story(data);
+				initialize_story(jQuery.parseJSON(data));
 			  },
-			  url: "http://localhost:3000/story/create"
+			  url: document.baseURI + "story/create"
 			});
 		});
 		

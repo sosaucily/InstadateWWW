@@ -12,8 +12,7 @@ initialize_story = function(options) {
 	
 	Story.current_story = options;
 	console.log ("Testing Story Manager");
-	console.log (Story.current_story);
-	
+	console.log (Story.current_story);	
 
 	Story.chapter_html = new Array(3);
 	Story.chapter_details_html = new Array(3);
@@ -23,7 +22,7 @@ initialize_story = function(options) {
 		curr_chap_data = Story.current_story.activities[chap];
 		curr_id = Story.chapter_ids[chap];
 		if (curr_chap_data.image_url == null) {
-			curr_chap_data.image_url = document.baseURI + "/assets/default-activity-icon.png";
+			curr_chap_data.image_url = document.baseURI + "/images/default-activity-icon.png";
 		}
 		img_html = "<img src=\"" + curr_chap_data.image_url + "\" alt=\"pic\"></img>";
 		Story.chapter_html[chap] = "<div id=\"" + Story.chapter_ids[chap] + "\" class=\"activity activity-" + curr_chap_data.category + "-evening\"><div class=\"chapter ui-corner-all\" ><table><tr><td><span id=\"" + curr_id + "_img\">" + img_html + "</span></td><td columnwidth=\"2\"><span id=\"" + curr_id + "\"><div class=\"meta\" ><div class=\"chapter-header\"><strong>Chapter " + (chap+1) + ": " + curr_chap_data.category + "</strong></div><div class=\"chapter-details\"><strong>" + curr_chap_data.name + "</strong><br/>" + curr_chap_data.source_category[0] + "</div></div></span></td></tr></table></div></div>";
