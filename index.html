@@ -189,7 +189,7 @@
 	<script type="text/javascript"> 
 	  $(function() {
 		$('#story_submit').click (function() {
-			console.log ("Getting data from backend url: " + document.URL );
+			console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
 			$.ajax({
 			  type: 'post',
 			  data: $("#story_form").serialize(),
