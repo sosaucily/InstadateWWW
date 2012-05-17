@@ -129,7 +129,7 @@
 			    <!-- This close button is optional. The widget also closes if you click or touch outside of the popup -->
 			    <a data-role="button" data-rel="close" href="#">Cancel</a>
 			</div>
-		    <form id="story_form" >
+		    <form id="story_form" onsubmit="return validate_location_input()">
 		        <label for="zip_search" style="margin-bottom:-3px;">Where is your date?</label>
 		<!--
 				<div class="ui-grid-a">
@@ -137,7 +137,7 @@
 					<div class="ui-block-b"><a id="findme" href="#" data-role="button" data-icon="gps" data-theme="a">Near me</a></div>
 				</div><!-- -->
 
-				<div class="insta-zip-col1"><input type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
+				<div class="insta-zip-col1"><input placeholder="zipcode" type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
 				<div class="insta-zip-col2"><a id="findme" href="#" data-role="button" data-icon="gps" data-mini="true" data-theme="a">Near me</a></div>
 	<!-- -->
 				<input type="text" name="zip_search" id="zip_search" value="" style="display:none;" />
@@ -162,7 +162,7 @@
 	        	<br />
 		        <label for="story_date">When is your date?</label>
 				<div>
-					<input name="story_date" id="story_date" type="date" data-role="datebox"
+					<input name="story_date" id="story_date" type="date" data-role="datebox" placeholder="Select date, blank = today" 
 				   		data-options='{"mode": "calbox","afterToday":true,"calTodayButton":true, "defaultDate":"2013-01-01"}' />
 				</div>
 				<!--Change mode:datebox to mode:calbox for full cal view-->
@@ -191,35 +191,18 @@
 
 	</div><!--END OF: Wrapper -->
 	   <!-- Footer -->
-	<div data-role="footer" class="footer">
+	<div data-role="footer" class="footer" data-position="fixed">
 	       <h4>Copyright 2012, Instadate - <a href="#" id="opensharedialog" data-role="actionsheet" data-sheet="shareData">Share</a></h4>
 	</div><!-- END OF: Footer -->
 	<script type="text/javascript"> 
-	  $(function() {
+/*	  $(function() {
 		$('#story_submit').click (function() {
-			if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-				if (PhoneGap.available) {
-					if (window.instadateConfig["data_server_url"].match(/localhost/)) {
-						window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
-					}
-				}
-			}
-			console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
-			$.ajax({
-			  type: 'post',
-			  data: $("#story_form").serialize(),
-			  headers: {
-			    'X-CSRF-Token': '<%= form_authenticity_token.to_s %>'
-			  },
-			  success: function(data) {
-				initialize_story(jQuery.parseJSON(data));
-			  },
-			  url: window.instadateConfig["data_server_url"] + "story/create"
-			});
+		  	
+
 		});
 		
 		
-	  });
+	  }); */
 	</script>
 	</div><!-- END OF: Homepage -->
 
@@ -232,7 +215,7 @@
 
 
 	    <!-- Header -->
-	    <div data-role="header" class="chapter-header">
+	    <div data-role="header" class="header story-header">
 	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip">Back</a> 
 	       <h4>Your Date</h4>
 	    </div><!-- END OF: Header -->
@@ -258,7 +241,7 @@
 	<!--    </div><!--END OF: Wrapper -->
 
 	    <!-- Footer -->
-		<div data-role="footer" class="chapter-footer">
+		<div data-role="footer" class="footer story-footer" data-position="fixed">
 	        <h4>Copyright 2012, Instadate - <a href="#" id="opensharedialog2" data-role="actionsheet" data-sheet="shareData2">Share</a></h4>
 		</div><!-- END OF: Footer -->
 
