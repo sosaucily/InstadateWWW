@@ -14,19 +14,24 @@
 }
 
 /* Page Header */
-.chapter-header {
-	/*margin-bottom: 25px;*/
-	box-shadow: 0px 2px 10px rgba(0,0,0,0.5);	
+.story-header {
+	margin-bottom: 0px;
 }
 
 /* Page Footer */
-.chapter-footer {
-	/*margin-bottom: 25px;*/
-	box-shadow: 0px -2px 10px rgba(0,0,0,0.5);	
+.story-footer {
+	margin-top: 0px;
+	/*box-shadow: 0px -2px 10px rgba(0,0,0,0.5);	*/
 }
 .chapter-footer h4 {
 	font-family: 'Terminal Dosis', sans-serif;
 	font-weight: 700;
+}
+
+.activity img {
+  width: 80px;
+  height: 80px;
+  padding: 2px 0 0 0;
 }
 
 .indoor {
@@ -141,6 +146,7 @@
 		font-family: "Georgia", Georgia, serif;
 		font-size: 16px;
 		opacity: 1.0;
+
 	}
 
   .chapter-details {

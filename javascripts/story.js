@@ -1,5 +1,10 @@
-
-
+$( document ).bind( 'mobileinit', function(){
+  $.mobile.loader.prototype.options.text = "loading";
+  $.mobile.loader.prototype.options.textVisible = false;
+  $.mobile.loader.prototype.options.theme = "a";
+  $.mobile.loader.prototype.options.html = "";
+});
+	
 var Story = {};
 	
 var initialize_story;
@@ -26,7 +31,7 @@ initialize_story = function(options) {
 		}
 		img_html = "<img src=\"" + curr_chap_data.image_url + "\" alt=\"pic\"></img>";
 		Story.chapter_html[chap] = "<div id=\"" + Story.chapter_ids[chap] + "\" class=\"activity activity-" + curr_chap_data.category + "-evening\"><div class=\"chapter ui-corner-all\" ><table><tr><td><span id=\"" + curr_id + "_img\">" + img_html + "</span></td><td columnwidth=\"2\"><span id=\"" + curr_id + "\"><div class=\"meta\" ><div class=\"chapter-header\"><strong>Chapter " + (chap+1) + ": " + curr_chap_data.category + "</strong></div><div class=\"chapter-details\"><strong>" + curr_chap_data.name + "</strong><br/>" + curr_chap_data.source_category[0] + "</div></div></span></td></tr></table></div></div>";
-		Story.chapter_details_html[chap] =   "<div id=\"" + curr_id + "_details\" style=\"display:none;\">	<!-- Map -->    <br /><div class=\"map_container\" style=\"margin-bottom: 25px;\">        <div class=\"the_map\" id=\"themap" + (chap+1) + "\"></div>    </div><!--END OF: Map -->	<!-- Address and Phone -->    <ul data-role=\"listview\" data-theme=\"a\" data-inset=\"true\">        <li><img src=\"assets/pin.png\" alt=\"Location\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_addr\">" + curr_chap_data.address + ", " + curr_chap_data.city + "</span></li>        <li><img src=\"assets/phone.png\" alt=\"Phone\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_phone\">" + curr_chap_data.phone + "</span></li>    </ul>  <br /><!-- END OF: Address and Phone --></div>";
+		Story.chapter_details_html[chap] =   "<div id=\"" + curr_id + "_details\" style=\"display:none;\">	<!-- Map -->    <br /><div class=\"map_container\" style=\"margin-bottom: 25px;\">        <div class=\"the_map\" id=\"themap" + (chap+1) + "\"></div>    </div><!--END OF: Map -->	<!-- Address and Phone -->    <ul data-role=\"listview\" data-theme=\"a\" data-inset=\"true\">        <li><img src=\"/images/pin.png\" alt=\"Location\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_addr\">" + curr_chap_data.address + ", " + curr_chap_data.city + "</span></li>        <li><img src=\"/images/phone.png\" alt=\"Phone\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_phone\">" + curr_chap_data.phone + "</span></li>    </ul>  <br /><!-- END OF: Address and Phone --></div>";
 		$('#story_list').append(Story.chapter_html[chap]);
 		$('#story_list').append(Story.chapter_details_html[chap]);
 		$('#' + curr_id + "_details").trigger("create");
@@ -85,3 +90,62 @@ function collapse_all_but(chapter_elem)
 		$('#' + Story.chapter_ids[chap]).slideToggle('slow');
 	}
 }
+$(function() {
+	$('#story').live('pageshow',function(event, ui){
+		console.log( "Loading Story List");
+		$.mobile.showPageLoadingMsg();
+	});
+	/*$('#story').live('page',function(event, ui){
+		console.log( "Finished Loading Story list");
+		$.mobile.hidePageLoadingMsg();
+	});*/
+});
+
+$(function() {
+	$('#story_submit').click(function(click_event) {
+		var location = $('#addr_search').val();
+		var zip = $('#zip_search').val();
+
+		valid_zip = /^\d{5}(-\d{4})?(?!-)$/
+
+		if (location.match(valid_zip)==null){
+			if (zip == "" || zip == null){
+		  		alert("Please either enter a zip code or click the \"Near My\" button");
+		  		click_event.preventDefault();
+		  		return false;
+		  	}
+		}
+		if (zip == "" || zip == null){
+			$('#zip_search').val(location);
+		}
+
+
+		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+			if (PhoneGap.available) {
+				if (window.instadateConfig["data_server_url"].match(/localhost/)) {
+					window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
+				}
+			}
+		}
+		console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
+
+		$.mobile.showPageLoadingMsg();
+		$.ajax({
+		  type: 'post',
+		  data: $("#story_form").serialize(),
+		  success: function(data) {
+			initialize_story(jQuery.parseJSON(data));
+			$.mobile.hidePageLoadingMsg();
+		  },
+		  url: window.instadateConfig["data_server_url"] + "story/create"
+		});
+		return true;
+	});
+	$('#addr_search').click(function() {
+		$('#addr_search').val("");
+		$('#zip_search').val("");
+		$('#lat_search').val("");
+		$('#lng_search').val("");
+	});
+	
+});

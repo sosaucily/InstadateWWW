@@ -1,3 +1,4 @@
+
     $(document).ready(function() {
 
         $('#findme').click(function() {
@@ -36,10 +37,10 @@
 							zip = addr[x].short_name;
 					}
 				}
-				$('#addr_search').val(zip + " - " + city);
 				$('#zip_search').val(zip);
 				$('#lat_search').val(position.coords.latitude);
 				$('#lng_search').val(position.coords.longitude);
+				$('#addr_search').val(zip + " - " + city);
 			}
 	    }
 	  );
