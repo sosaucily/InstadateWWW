@@ -102,6 +102,14 @@ $(function() {
 });
 
 $(function() {
+	$(document).on("click", "#story_submit", function() {
+			var $this = $( this ),
+				theme = $this.jqmData("theme") || $.mobile.loadingMessageTheme,
+				msgText = $this.jqmData("msgtext") || $.mobile.loadingMessage,
+				textonly = !!$this.jqmData("textonly");
+			$.mobile.showPageLoadingMsg(theme, msgText, textonly);
+		})
+
 	$('#story_submit').click(function(click_event) {
 		var location = $('#addr_search').val();
 		var zip = $('#zip_search').val();
@@ -122,14 +130,14 @@ $(function() {
 
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
 			if (PhoneGap.available) {
-				if (window.instadateConfig["data_server_url"].match(/localhost/)) {
+				if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
 					window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
 				}
 			}
 		}
 		console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
 
-		$.mobile.showPageLoadingMsg();
+		//$.mobile.showPageLoadingMsg();
 		$.ajax({
 		  type: 'post',
 		  data: $("#story_form").serialize(),
