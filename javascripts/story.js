@@ -129,10 +129,9 @@ $(function() {
 
 
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-			if (PhoneGap.available) {
-				if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
-					window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
-				}
+			if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
+				//Changing the backend URL because we're on an iphone or iphone simulator
+				window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
 			}
 		}
 		console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
