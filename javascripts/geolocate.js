@@ -31,7 +31,7 @@
 					for (y=0; y<types.length; y++){
 						if (types[y] == "locality")
 							city = addr[x].long_name;
-						else if (types[y] == "admiistrative_area_level_1")
+						else if (types[y] == "administrative_area_level_1")
 							state = addr[x].short_name;
 						else if (types[y] == "postal_code")
 							zip = addr[x].short_name;
