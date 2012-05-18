@@ -129,6 +129,7 @@ $(function() {
 
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
 			if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
+				//Changing the backend URL because we're on an iphone or iphone simulator
 				window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
 			}
 		}
