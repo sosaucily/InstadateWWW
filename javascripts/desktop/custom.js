@@ -33,20 +33,13 @@ $(document).ready(function(){
 			// Get current and clicked panels
 			var current = '#' + $('#tabs li.current').attr('data-panel');
 			var clicked = '#' + $(this).attr('data-panel');
-			
+
 			// Toggle tabs
 			$('#tabs li').removeClass('current');
 			$(this).addClass('current');
 			
-			$(current).fadeTo(400, 0, function(){
-				
-				$(current).slideUp(400, function(){
-					
-					$(clicked).fadeTo(100, 100);
-					$(clicked).slideDown(400);
-					
-				});
-				
+			$(current).toggle(400, function(){
+				$(clicked).toggle(400);				
 			});
 			
 	});

@@ -28,9 +28,14 @@ initialize_story = function(options) {
 		if (curr_chap_data.image_url == null) {
 			curr_chap_data.image_url = document.baseURI + "/images/default-activity-icon.png";
 		}
+
+		click_phone = curr_chap_data.phone.replace(/-/g,"").substr(2,curr_chap_data.phone.length-2);
+
+		map_url = "http://maps.google.com/maps?q=" +curr_chap_data.latitude+","+curr_chap_data.longitude
+
 		img_html = "<img src=\"" + curr_chap_data.image_url + "\" alt=\"pic\"></img>";
 		Story.chapter_html[chap] = "<div id=\"" + Story.chapter_ids[chap] + "\" class=\"activity activity-" + curr_chap_data.category + "-evening\"><div class=\"chapter ui-corner-all\" ><table><tr><td><span id=\"" + curr_id + "_img\">" + img_html + "</span></td><td columnwidth=\"2\"><span id=\"" + curr_id + "\"><div class=\"meta\" ><div class=\"chapter-header\"><strong>Chapter " + (chap+1) + ": " + curr_chap_data.category + "</strong></div><div class=\"chapter-details\"><strong>" + curr_chap_data.name + "</strong><br/>" + curr_chap_data.source_category[0] + "</div></div></span></td></tr></table></div></div>";
-		Story.chapter_details_html[chap] =   "<div id=\"" + curr_id + "_details\" style=\"display:none;\">	<!-- Map -->    <br /><div class=\"map_container\" style=\"margin-bottom: 25px;\">        <div class=\"the_map\" id=\"themap" + (chap+1) + "\"></div>    </div><!--END OF: Map -->	<!-- Address and Phone -->    <ul data-role=\"listview\" data-theme=\"a\" data-inset=\"true\">        <li><img src=\"/images/pin.png\" alt=\"Location\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_addr\">" + curr_chap_data.address + ", " + curr_chap_data.city + "</span></li>        <li><img src=\"/images/phone.png\" alt=\"Phone\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_phone\">" + curr_chap_data.phone + "</span></li>    </ul>  <br /><!-- END OF: Address and Phone --></div>";
+		Story.chapter_details_html[chap] =   "<div id=\"" + curr_id + "_details\" style=\"display:none;\">	<!-- Map -->    <br /><div class=\"map_container\" style=\"margin-bottom: 25px;\">        <div class=\"the_map\" id=\"themap" + (chap+1) + "\"></div>    </div><!--END OF: Map -->	<!-- Address and Phone -->    <ul data-role=\"listview\" data-theme=\"a\" data-inset=\"true\">        <li><img src=\"/images/pin.png\" alt=\"Location\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_addr\"><a href=\"" + map_url + "\">" + curr_chap_data.address + ", " + curr_chap_data.city + "</a></span></li>        <li><img src=\"/images/phone.png\" alt=\"Phone\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_phone\"><a href=\"tel:" +click_phone+ "\">" + curr_chap_data.phone + "</a></span></li>    </ul>  <br /><!-- END OF: Address and Phone --></div>";
 		$('#story_list').append(Story.chapter_html[chap]);
 		$('#story_list').append(Story.chapter_details_html[chap]);
 		$('#' + curr_id + "_details").trigger("create");

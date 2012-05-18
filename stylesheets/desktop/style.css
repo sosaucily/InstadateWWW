@@ -106,7 +106,7 @@ h1.logo{
 
 #iphone{
 	position: absolute;
-	top: -350px;
+	top: -320px;
 	right: 23px;
 	width: 266px;
 	height: 538px;
@@ -154,7 +154,7 @@ h1.logo{
 }
 
 #content{
-	padding-top: 35px;
+	padding-top: 10px;
 	margin-left: 25px;
 }
 
@@ -219,6 +219,36 @@ h1.logo{
 	margin: 0;
 }
 
+.about, .about li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.about li{
+	font-size: 13px;
+	width: 520px;
+	float: left;
+	margin-right: 40px;
+	padding-bottom: 20px;
+	line-height:20px;
+}
+
+.about h2{
+	color: #2D3D3A;
+	font-size: 18px;
+	padding: 0 0 0 33px;
+	margin: 0 0 7px 0;
+	height:26px;
+	line-height:26px;
+	overflow:hidden;
+}
+
+.about p{
+	color: #555;
+	margin: 0;
+}
+
 #testimonials li{
 	margin:10px 0 50px 0;
 }
@@ -264,7 +294,7 @@ h1.logo{
 	overflow: hidden;
 	padding: 20px 0 0 0;
 	font-size:11px;
-	margin-top: 5px;
+	margin-top: 10px;
 
 }
 
@@ -385,3 +415,12 @@ h1.logo{
 .features h2.trash{background:url(../../images/desktop/icons/trash.png) left center no-repeat;}
 .features h2.trend{background:url(../../images/desktop/icons/trend.png) left center no-repeat;}
 .features h2.world{background:url(../../images/desktop/icons/world.png) left center no-repeat;}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	About Icon Classes
+/*-----------------------------------------------------------------------------------*/
+
+
+.about h2.speechbubble{background:url(../../images/desktop/icons/speechbubble.png) left center no-repeat;}
+.about h2.speechmedia{background:url(../../images/desktop/icons/speechmedia.png) left center no-repeat;}
