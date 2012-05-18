@@ -13,7 +13,6 @@ Story.chapter_ids = ["chapter_1","chapter_2","chapter_3"];
 Story.map_loaded = [0,0,0];
 
 initialize_story = function(options) {
-	$('#story_list').html('');
 	
 	Story.current_story = options;
 	console.log ("Testing Story Manager");
@@ -129,15 +128,15 @@ $(function() {
 
 
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-			if (PhoneGap.available) {
-				if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
-					window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
-				}
+			if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
+				window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
 			}
 		}
 		console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
 
 		//$.mobile.showPageLoadingMsg();
+		//Clear any existing data
+		$('#story_list').html('');
 		$.ajax({
 		  type: 'post',
 		  data: $("#story_form").serialize(),
