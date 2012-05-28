@@ -40,85 +40,85 @@
 }
 
 .activity {
-  height: 90px;
+  height: 93px;
   margin: 0px 0px 0px 0px;
   padding: 16px 23px 15px 23px;
 }
 
 .activity-see-evening {
   background-image:url(../images/evening-see-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 .activity-see-day {
   background-image:url(../images/day-see-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 .activity-eat-day {
   background-image:url(../images/day-eat-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 .activity-eat-evening {
   background-image:url(../images/evening-eat-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 .activity-eat {
   background-image:url(../images/evening-eat-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 .activity-do {
   background-image:url(../images/evening-do-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 .activity-see {
   background-image:url(../images/evening-see-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 .activity-do-day {
   background-image:url(../images/day-do-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 .activity-do-evening {
   background-image:url(../images/evening-do-2x.jpg);
-  background-size: 320px 123px;
+  background-size: 320px 124px;
 }
 
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 	.activity-see-evening {
 	  background-image:url(../images/evening-see-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 	.activity-see-day {
 	  background-image:url(../images/day-see-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 	.activity-eat-day {
 	  background-image:url(../images/day-eat-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 	.activity-eat-evening {
 	  background-image:url(../images/evening-eat-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 	.activity-eat {
 	  background-image:url(../images/evening-eat-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 	.activity-do {
 	  background-image:url(../images/evening-do-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 	.activity-see {
 	  background-image:url(../images/evening-see-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 	.activity-do-day {
 	  background-image:url(../images/day-do-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 	.activity-do-evening {
 	  background-image:url(../images/evening-do-2x.jpg);
-	  background-size: 320px 123px;
+	  background-size: 320px 124px;
 	}
 }
 
