@@ -45,10 +45,13 @@ initialize_story = function(options) {
 		display_address = curr_chap_data.address + ", " + curr_chap_data.city;
 		display_address = display_address.substring(0,35); 
 
+		business_name = curr_chap_data.name.substring(0,30);
+		source_category = curr_chap_data.source_category[0].substring(0,20);
+
 		map_url = "http://maps.google.com/maps?q=" + curr_chap_data.latitude + "," + curr_chap_data.longitude
 
 		img_html = "<img src=\"" + curr_chap_data.image_url + "\" alt=\"pic\"></img>";
-		Story.chapter_html[chap] = "<div id=\"" + Story.chapter_ids[chap] + "\" class=\"activity activity-" + curr_chap_data.category + "-evening\"><div class=\"chapter ui-corner-all\" ><table><tr><td><span id=\"" + curr_id + "_img\">" + img_html + "</span></td><td columnwidth=\"2\"><span id=\"" + curr_id + "\"><div class=\"meta\" ><div class=\"chapter-header\"><strong>Chapter " + (chap+1) + ": " + curr_chap_data.category + "</strong></div><div class=\"chapter-details\"><strong>" + curr_chap_data.name + "</strong><br/>" + curr_chap_data.source_category[0] + "</div></div></span></td></tr></table></div></div>";
+		Story.chapter_html[chap] = "<div id=\"" + Story.chapter_ids[chap] + "\" class=\"activity activity-" + curr_chap_data.category + "-evening\"><div class=\"chapter ui-corner-all\" ><table><tr><td><span id=\"" + curr_id + "_img\">" + img_html + "</span></td><td columnwidth=\"2\"><span id=\"" + curr_id + "\"><div class=\"meta\" ><div class=\"chapter-header\"><strong>Chapter " + (chap+1) + ": " + curr_chap_data.category + "</strong></div><div class=\"chapter-details\"><strong>" + business_name + "</strong><br/>" + source_category + "</div></div></span></td></tr></table></div></div>";
 		Story.chapter_details_html[chap] =   "<div id=\"" + curr_id + "_details\" style=\"display:none;margin: 10px 10px 10px 10px\">	<!-- Map -->    <div class=\"map_container\" style=\"margin-bottom: 10px;\">        <div class=\"the_map\" id=\"themap" + (chap+1) + "\"></div>    </div><!--END OF: Map -->	<!-- Address and Phone -->";
 		Story.chapter_details_html[chap] += "<ul data-role=\"listview\" data-theme=\"a\" data-mini=\"true\" data-inset=\"true\">";
 		Story.chapter_details_html[chap] += "<li><img src=\"images/pin.png\" alt=\"Location\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_addr\"><a class=\"addr_link\" href=\"" + map_url + "\" target=\"_blank\">" + display_address + "</a></span></li>";
@@ -154,7 +157,7 @@ $(function() {
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
 			if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
 				//Changing the backend URL because we're on an iphone or iphone simulator
-				window.instadateConfig["data_server_url"] = "http://192.168.1.73:9292/";
+				window.instadateConfig["data_server_url"] = "http://www.instadate.com/";
 			}
 		}
 		console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
