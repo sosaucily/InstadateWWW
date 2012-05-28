@@ -43,10 +43,16 @@ initialize_story = function(options) {
 		}
 
 		display_address = curr_chap_data.address + ", " + curr_chap_data.city;
-		display_address = display_address.substring(0,35); 
+		if (display_address.length > 28)
+			display_address = display_address.substring(0,25) + "..."; 
 
-		business_name = curr_chap_data.name.substring(0,30);
-		source_category = curr_chap_data.source_category[0].substring(0,20);
+		business_name = curr_chap_data.name;
+		if (business_name.length > 30)
+			business_name = business_name.substring(0,27) + "...";
+
+		source_category = curr_chap_data.source_category[0]
+		if (source_category.length > 20)
+			source_category = source_category.substring(0,17) + "...";
 
 		map_url = "http://maps.google.com/maps?q=" + curr_chap_data.latitude + "," + curr_chap_data.longitude
 
