@@ -1,31 +1,31 @@
 
 .insta-zip-col1 {
-	display: inline-block;
-	width: 52%;
-	margin-right:7px;
-	margin-left:-5px;
+  display: inline-block;
+  width: 52%;
+  margin-right:7px;
+  margin-left:-5px;
 }
 
 .insta-zip-col2 {
-	display: inline-block;
-	width: 48%;
-	margin-left:3px;
-	margin-right:-15px;
+  display: inline-block;
+  width: 48%;
+  margin-left:3px;
+  margin-right:-15px;
 }
 
 /* Page Header */
 .story-header {
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 /* Page Footer */
 .story-footer {
-	margin-top: 0px;
-	/*box-shadow: 0px -2px 10px rgba(0,0,0,0.5);	*/
+  margin-top: 0px;
+  /*box-shadow: 0px -2px 10px rgba(0,0,0,0.5);  */
 }
 .chapter-footer h4 {
-	font-family: 'Terminal Dosis', sans-serif;
-	font-weight: 700;
+  font-family: 'Terminal Dosis', sans-serif;
+  font-weight: 700;
 }
 
 .activity img {
@@ -84,54 +84,54 @@
 
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-	.activity-see-evening {
-	  background-image:url(../images/evening-see-2x.jpg);
-	  background-size: 320px 124px;
-	}
-	.activity-see-day {
-	  background-image:url(../images/day-see-2x.jpg);
-	  background-size: 320px 124px;
-	}
-	.activity-eat-day {
-	  background-image:url(../images/day-eat-2x.jpg);
-	  background-size: 320px 124px;
-	}
-	.activity-eat-evening {
-	  background-image:url(../images/evening-eat-2x.jpg);
-	  background-size: 320px 124px;
-	}
-	.activity-eat {
-	  background-image:url(../images/evening-eat-2x.jpg);
-	  background-size: 320px 124px;
-	}
-	.activity-do {
-	  background-image:url(../images/evening-do-2x.jpg);
-	  background-size: 320px 124px;
-	}
-	.activity-see {
-	  background-image:url(../images/evening-see-2x.jpg);
-	  background-size: 320px 124px;
-	}
-	.activity-do-day {
-	  background-image:url(../images/day-do-2x.jpg);
-	  background-size: 320px 124px;
-	}
-	.activity-do-evening {
-	  background-image:url(../images/evening-do-2x.jpg);
-	  background-size: 320px 124px;
-	}
+  .activity-see-evening {
+    background-image:url(../images/evening-see-2x.jpg);
+    background-size: 320px 124px;
+  }
+  .activity-see-day {
+    background-image:url(../images/day-see-2x.jpg);
+    background-size: 320px 124px;
+  }
+  .activity-eat-day {
+    background-image:url(../images/day-eat-2x.jpg);
+    background-size: 320px 124px;
+  }
+  .activity-eat-evening {
+    background-image:url(../images/evening-eat-2x.jpg);
+    background-size: 320px 124px;
+  }
+  .activity-eat {
+    background-image:url(../images/evening-eat-2x.jpg);
+    background-size: 320px 124px;
+  }
+  .activity-do {
+    background-image:url(../images/evening-do-2x.jpg);
+    background-size: 320px 124px;
+  }
+  .activity-see {
+    background-image:url(../images/evening-see-2x.jpg);
+    background-size: 320px 124px;
+  }
+  .activity-do-day {
+    background-image:url(../images/day-do-2x.jpg);
+    background-size: 320px 124px;
+  }
+  .activity-do-evening {
+    background-image:url(../images/evening-do-2x.jpg);
+    background-size: 320px 124px;
+  }
 }
 
 
 .chapter {
   height: 90px;
   padding: 0px 6px 0px 7px;
-  background:black;
+  /*background:black;*/
   color: white;
-  opacity:.90;
-  filter:alpha(opacity=90);
+  opacity:1.0;
+  filter:alpha(opacity=100);
   table {
-    filter:alpha(opacity=90);
+    filter:alpha(opacity=100);
     height: 100%;
   }
   span img {
@@ -143,15 +143,15 @@
 
 
   .chapter-header {
-		font-family: "Georgia", Georgia, serif;
-		font-size: 16px;
-		opacity: 1.0;
+    font-family: "Georgia", Georgia, serif;
+    font-size: 16px;
+    opacity: 1.0;
 
-	}
+  }
 
   .chapter-details {
-		font-size: 13px;
-	}
+    font-size: 13px;
+  }
 }
 
 .story_list {
@@ -184,9 +184,25 @@ div.loading-visible {
 /* Google Map */
 
 .the_map {
-	width: 100%;
-	height: 100px;
+  width: 100%;
+  height: 87px;
 }
 
+.phone_link:link { text-decoration:none; color:#000000;}
+.phone_link:visited { text-decoration:none; color:#000000;}
+.phone_link:hover { text-decoration:none; color:#000000;}
+.phone_link:active { text-decoration:none; color:#000000;}
 
+.addr_link:link { text-decoration:none; color:#000000;}
+.addr_link:visited { text-decoration:none; color:#000000;}
+.addr_link:hover { text-decoration:none; color:#000000;}
+.addr_link:active { text-decoration:none; color:#000000;}
 
+.api_link:link { text-decoration:none; color:#000000;}
+.api_link:visited { text-decoration:none; color:#000000;}
+.api_link:hover { text-decoration:none; color:#000000;}
+.api_link:active { text-decoration:none; color:#000000;}
+
+.chapter_details_li {
+  min-height: 0px; /* THIS DOESN"T WORK, JQUERY takes precedence... unsure how to fix. */
+}
