@@ -56,7 +56,7 @@ initialize_story = function(options) {
 		Story.chapter_details_html[chap] += "<ul data-role=\"listview\" data-theme=\"a\" data-mini=\"true\" data-inset=\"true\">";
 		Story.chapter_details_html[chap] += "<li><img src=\"images/pin.png\" alt=\"Location\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_addr\"><a class=\"addr_link\" href=\"" + map_url + "\" target=\"_blank\">" + display_address + "</a></span></li>";
 		Story.chapter_details_html[chap] += "<li><img src=\"images/phone.png\" alt=\"Phone\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_phone\"><a class=\"phone_link\" href=\"tel:" +click_phone+ "\">" + display_phone + "</a></span></li>";
-		Story.chapter_details_html[chap] += "<li><img src=\"images/info.png\" alt=\"Yelp\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_api\"><a class=\"api_link\" href=\"" +curr_chap_data.business_url+ "\">More details</a></span><div style=\"margin:0 0 0 10px;display:inline-block;\"><a href=\"" +curr_chap_data.business_url+ "\"><img src=\"images/yelp_logo_30.png\" style=\"margin:-6px 0 -10px 0px;\" /></a></div></li>";
+		Story.chapter_details_html[chap] += "<li><img src=\"images/info.png\" alt=\"Yelp\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_api\"><a class=\"api_link\" href=\"" +curr_chap_data.business_url+ "\" target=\"_blank\">More details</a></span><div style=\"margin:0 0 0 10px;display:inline-block;\"><a href=\"" +curr_chap_data.business_url+ "\" target=\"_blank\"><img src=\"images/yelp_logo_30.png\" style=\"margin:-6px 0 -10px 0px;\" /></a></div></li>";
 		Story.chapter_details_html[chap] += "</ul>  <!-- END OF: Address and Phone --></div>";
 		$('#story_list').append(Story.chapter_html[chap]);
 		$('#story_list').append(Story.chapter_details_html[chap]);
