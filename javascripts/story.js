@@ -92,13 +92,14 @@ initialize_story = function(options) {
 	});
 
 }
+
 function getMapOnce(lat,lng,elem)
 {
 	if (Story.map_loaded[elem-1] == 0)
 	{
 		Story.map_loaded[elem-1] = 1;
 		map_src = getMap(lat,lng,"themap" + elem);
-		$('#themap' + elem).html('<img src="' + map_src + '" />');
+		$('#themap' + elem).html('<img src="' + map_src + '" style="width:288px;height:87" />');
 	}
 }
 function getMap(lat,lng, elementid)
@@ -112,7 +113,7 @@ function getMap(lat,lng, elementid)
 	        };
     var map = new google.maps.Map(document.getElementById(elementid), myOptions);
 	*/
-	return ("http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&markers=color:blue%7Clabel:S%7C" + lat + "," + lng + "&size=288x87&sensor=false");
+	return ("http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=16&markers=color:blue%7Clabel:S%7C" + lat + "," + lng + "&size=576x174&sensor=false");
 }
 
 function collapse_all_but(chapter_elem)
