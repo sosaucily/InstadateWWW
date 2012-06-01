@@ -230,7 +230,7 @@ h1.logo{
 	width: 520px;
 	float: left;
 	margin-right: 40px;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 	line-height:20px;
 }
 
@@ -335,6 +335,16 @@ h1.logo{
     line-height:0;
     text-indent:-9999px;
     width:50px;
+}
+
+#social-icons h2{
+	color: #2D3D3A;
+	font-size: 18px;
+	padding: 0 60px 0 0px;
+	margin: 0 0 -34px 0;
+	height:26px;
+	line-height: 0px;
+	overflow:show;
 }
 
 #social-icons{

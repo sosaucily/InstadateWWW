@@ -56,13 +56,15 @@ initialize_story = function(options) {
 
 		map_url = "http://maps.google.com/maps?q=" + curr_chap_data.latitude + "," + curr_chap_data.longitude
 
-		img_html = "<img src=\"" + curr_chap_data.image_url + "\" alt=\"pic\"></img>";
-		Story.chapter_html[chap] = "<div id=\"" + Story.chapter_ids[chap] + "\" class=\"activity activity-" + curr_chap_data.category + "-evening\"><div class=\"chapter ui-corner-all\" ><table><tr><td><span id=\"" + curr_id + "_img\">" + img_html + "</span></td><td columnwidth=\"2\"><span id=\"" + curr_id + "\"><div class=\"meta\" ><div class=\"chapter-header\"><strong>Chapter " + (chap+1) + ": " + curr_chap_data.category + "</strong></div><div class=\"chapter-details\"><strong>" + business_name + "</strong><br/>" + source_category + "</div></div></span></td></tr></table></div></div>";
+		img_html = "<img id=\"business_image_url\" src=\"" + curr_chap_data.image_url + "\" alt=\"pic\"></img>";
+		
+		Story.chapter_html[chap] = "<div id=\"" + Story.chapter_ids[chap] + "\" class=\"activity activity-" + curr_chap_data.category + "-evening\"><div class=\"chapter ui-corner-all\" ><table class=\"chapter_div\"><tr><td><span id=\"" + curr_id + "_img\">" + img_html + "</span></td><td columnwidth=\"2\"><span id=\"" + curr_id + "\"><div class=\"chapter_text_div\" ><div class=\"chapter-header\"><strong>Chapter " + (chap+1) + ": " + curr_chap_data.category + "</strong></div><div class=\"chapter-details\"><strong>" + business_name + "</strong><br/>" + source_category + "</div></div></span></td>";
+		Story.chapter_html[chap] += "<td><div class=\"chapter_arrow\" id=\"" + curr_id +"\"></div></td></tr></table></div></div>";
 		Story.chapter_details_html[chap] =   "<div id=\"" + curr_id + "_details\" style=\"display:none;margin: 10px 10px 10px 10px\">	<!-- Map -->    <div class=\"map_container\" style=\"margin-bottom: 10px;\">        <div class=\"the_map\" id=\"themap" + (chap+1) + "\"></div>    </div><!--END OF: Map -->	<!-- Address and Phone -->";
 		Story.chapter_details_html[chap] += "<ul data-role=\"listview\" data-theme=\"a\" data-mini=\"true\" data-inset=\"true\">";
 		Story.chapter_details_html[chap] += "<li><img src=\"images/pin.png\" alt=\"Location\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_addr\"><a class=\"addr_link\" href=\"" + map_url + "\" target=\"_blank\">" + display_address + "</a></span></li>";
 		Story.chapter_details_html[chap] += "<li><img src=\"images/phone.png\" alt=\"Phone\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_phone\"><a class=\"phone_link\" href=\"tel:" +click_phone+ "\">" + display_phone + "</a></span></li>";
-		Story.chapter_details_html[chap] += "<li><img src=\"images/info.png\" alt=\"Yelp\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_api\"><a class=\"api_link\" href=\"" +curr_chap_data.business_url+ "\" target=\"_blank\">More details</a></span><div style=\"margin:0 0 0 10px;display:inline-block;\"><a href=\"" +curr_chap_data.business_url+ "\" target=\"_blank\"><img src=\"images/yelp_logo_30.png\" style=\"margin:-6px 0 -10px 0px;\" /></a></div></li>";
+		Story.chapter_details_html[chap] += "<li><img src=\"images/info.png\" alt=\"Yelp\" class=\"ui-li-icon\"><span id=\"" + curr_id + "_api\"><a class=\"api_link\" href=\"" +curr_chap_data.business_url+ "\" target=\"_blank\">More details</a></span><div style=\"margin:0 0 0 10px;display:inline-block;\"><a href=\"" +curr_chap_data.business_url+ "\" target=\"_blank\"><img id=\"yelp_image\" src=\"images/yelp_logo_100x50-2x.png\" style=\"margin:-6px 0 -8px 0px;\" /></a></div></li>";
 		Story.chapter_details_html[chap] += "</ul>  <!-- END OF: Address and Phone --></div>";
 		$('#story_list').append(Story.chapter_html[chap]);
 		$('#story_list').append(Story.chapter_details_html[chap]);
