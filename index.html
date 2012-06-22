@@ -270,37 +270,27 @@
 	<script id="chapter_html" type="text/html" >
 		<div id="{{chapter_name}}" class="activity activity-{{category}}-evening">
 			<div class="chapter ui-corner-all">
-				<table class="chapter_div">
-					<tr>
-						<td>
-							<span id="{{chapter_name}}_img">
-								<img id="business_image_url" src="{{image_url}}" alt="pic"></img>
-							</span>
-						</td>
-						<td>
-							<span id="{{chapter_name}}">
-								<div class="chapter_text_div">
-									<div class="chapter-header">
-										<strong>Chapter {{id}}: {{category}}</strong>
-									</div>
-									<div class="chapter-details">
-										<strong>{{business_name}}</strong>
-										<br/>
-										{{source_category}}
-									</div>
-								</div>
-							</span>
-						</td>
-						<td>
-							<div class="chapter_arrow" id="{{chapter_name}}_arrow">
-							</div>
-						</td>
-					</tr>
-				</table>
+				<div class="chapter_div">
+					<div id="{{chapter_name}}_img" class="chapter_business_img">
+						<img id="business_image_url" src="{{image_url}}" alt="pic"></img>
+					</div>
+					<div id="{{chapter_name}}" class="chapter_business_text">
+						<div class="chapter-header">
+							<strong>Chapter {{id}}: {{category}}</strong>
+						</div>
+						<div class="chapter-details">
+							<strong>{{business_name}}</strong>
+							<br/>
+							{{source_category}}
+						</div>
+					</div>
+					<div class="chapter_arrow">
+						<img class="chapter_arrow_img" id="{{chapter_name}}_arrow" src="../images/right-arrow.png"></img>
+					</div>
+				</div>
 			</div>
 		</div>
 	</script>
-	
 	<script id="chapter_details_html" type="text/html" >
 		<div id="{{chapter_name}}_details" style="display:none;margin: 10px 10px 10px 10px">
 			<!-- Map -->

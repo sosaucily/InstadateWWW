@@ -28,12 +28,6 @@
   font-weight: 700;
 }
 
-.activity img {
-  width: 80px;
-  height: 80px;
-  padding: 2px 0 0 0;
-}
-
 .indoor {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -172,15 +166,33 @@
 
 .chapter_div {
 	width:290px;
+	height: 76px;
+	display: inline-block;
 }
 
-.chapter_text_div {
-	width:180px;
+.chapter_business_img {
+	padding: 5px 10px 0px 3px;
+	display: inline-block;
 }
 
-.chapter_arrow{
-	background-image:url(../images/right-arrow.png);
+.chapter_business_text {
+	display: inline-block;
+	width: 180px;
+	vertical-align: top;
+}
+
+.chapter_arrow {
+	display: inline-block;
+	vertical-align: top;
   /*background-size: 320px 124px;*/
+}
+
+.chapter_arrow_img {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin-top: 32px;
+	margin-left: 2px;
 }
 
 
