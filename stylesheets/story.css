@@ -175,6 +175,12 @@
 	display: inline-block;
 }
 
+.chapter_business_img img {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AFAFAF;
+}
+
 .chapter_business_text {
 	display: inline-block;
 	width: 180px;
@@ -192,7 +198,7 @@
 	width: 15px;
 	height: 15px;
 	margin-top: 32px;
-	margin-left: 2px;
+	/* margin-left: 2px; */
 }
 
 

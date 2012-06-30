@@ -87,7 +87,7 @@ initialize_story = function(options) {
 		getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 1);
 		collapse_all_but(1);
 		$('#chapter_1_details').slideToggle('slow', function() {
-			$('#chapter_1_arrow').attr('src',"../images/down-arrow.png");
+			$('#chapter_1_arrow').attr('src',"images/down-arrow.png");
 		});
 	});
 
@@ -95,7 +95,7 @@ initialize_story = function(options) {
 		getMapOnce(Story.current_story.activities[1].latitude,Story.current_story.activities[1].longitude, 2);
 		collapse_all_but(2);
 		$('#chapter_2_details').slideToggle('slow', function() {
-			$('#chapter_2_arrow').attr('src',"../images/down-arrow.png");
+			$('#chapter_2_arrow').attr('src',"images/down-arrow.png");
 		});
 //		$('#chapter_1_arrow').attr('src',"../images/right-arrow.png");
 
@@ -106,7 +106,7 @@ initialize_story = function(options) {
 		getMapOnce(Story.current_story.activities[2].latitude,Story.current_story.activities[2].longitude, 3);
 		collapse_all_but(3);
 		$('#chapter_3_details').slideToggle('slow', function() {
-			$('#chapter_3_arrow').attr('src',"../images/down-arrow.png");
+			$('#chapter_3_arrow').attr('src',"images/down-arrow.png");
 		});
 	});
 
