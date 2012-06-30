@@ -84,30 +84,24 @@ initialize_story = function(options) {
 	}
 	
 	$('#chapter_1').click (function() {
+		$('#chapter_1_details').slideToggle('slow', function() {
+		});
 		getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 1);
 		collapse_all_but(1);
-		$('#chapter_1_details').slideToggle('slow', function() {
-			$('#chapter_1_arrow').attr('src',"images/down-arrow.png");
-		});
 	});
 
 	$('#chapter_2').click (function() {
+		$('#chapter_2_details').slideToggle('slow', function() {
+		});
 		getMapOnce(Story.current_story.activities[1].latitude,Story.current_story.activities[1].longitude, 2);
 		collapse_all_but(2);
-		$('#chapter_2_details').slideToggle('slow', function() {
-			$('#chapter_2_arrow').attr('src',"images/down-arrow.png");
-		});
-//		$('#chapter_1_arrow').attr('src',"../images/right-arrow.png");
-
-//		$('#chapter_3_arrow').attr('src',"../images/right-arrow.png");
 	});
 
-	$('#chapter_3').click (function() {
+	$('#chapter_3').click (function() {	
+		$('#chapter_3_details').slideToggle('slow', function() {
+		});
 		getMapOnce(Story.current_story.activities[2].latitude,Story.current_story.activities[2].longitude, 3);
 		collapse_all_but(3);
-		$('#chapter_3_details').slideToggle('slow', function() {
-			$('#chapter_3_arrow').attr('src',"images/down-arrow.png");
-		});
 	});
 
 }
@@ -137,9 +131,16 @@ function getMap(lat,lng, elementid)
 
 function collapse_all_but(chapter_elem)
 {
-	for(chap = 0; chap < Story.chapter_ids.length; chap++)
-	if (chap+1 != chapter_elem) {
-		$('#' + Story.chapter_ids[chap]).slideToggle('slow');
+	if ( $('#chapter_'+(chapter_elem)+'_arrow').attr('src').indexOf("down") > 0)
+		$('#chapter_'+(chapter_elem)+'_arrow').attr('src',"images/right-arrow.png");
+	else
+		$('#chapter_'+(chapter_elem)+'_arrow').attr('src',"images/down-arrow.png");
+
+	for(chap = 0; chap < Story.chapter_ids.length; chap++) {
+		if (chap+1 != chapter_elem) {
+			$('#' + Story.chapter_ids[chap]).slideToggle('slow');
+			$('#chapter_'+(chap+1)+'_arrow').attr('src',"images/right-arrow.png");
+		}
 	}
 }
 $(function() {
