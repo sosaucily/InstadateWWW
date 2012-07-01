@@ -8,6 +8,7 @@
             } else {
                 error('Geolocation not supported');
             }
+			//window.plugins.shareKit.shareToFacebook("test message", "http://www.instadateapp.com" );
 			//alert ("Done!");
         });
     });

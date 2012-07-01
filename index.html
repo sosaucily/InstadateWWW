@@ -76,10 +76,13 @@
 		document.addEventListener('deviceready', function() {
 			try {
 			//alert('Device is ready! Make sure you set your app_id below this alert.');
-			FB.init({ appId: '322572417779217', nativeInterface: CDV.FB, useCachedDialogs: false });
-			document.getElementById('data').innerHTML = "";
+			//FB.init({ appId: '322572417779217', nativeInterface: CDV.FB, useCachedDialogs: false });
+			//document.getElementById('data').innerHTML = "";
+			//window.plugins.shareKit.isLoggedToFacebook(function(FBStatus) {
+			//	console.log("FB STATUS: " + FBStatus);
+			//});
 			} catch (e) {
-			//alert(e);
+				alert(e);
 			}
 			}, false);
 		document.addEventListener("deviceready", onDeviceReady, false);
