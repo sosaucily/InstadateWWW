@@ -18,25 +18,21 @@ function authAndShareToTwitter(isLoggedIn, message, url) {
 	}
 }
 
-function showSharingSheet() {
+function showSharingSheet(message, subject, body) {
 	console.log("Running showSharingSheet function");
 	var buttons = ["Share to Facebook", "Share to Twitter", "Share via Email", "Cancel"];
 	var delegate = window.plugins.nativeControls.createActionSheet(buttons, null, 3, 3);
-	var message = "Test message from Instadate";
-	var url = "http://www.instadateapp.com/testtest";
-	var subject = "Check out this date!";
-	var body = "I have shared a date with you, check it out!";
 	delegate.onActionSheetDismissed = function(index)
 	{
 		switch(index) {
 			case 0:
 				console.log("Sharing to Facebook!");
-				window.plugins.shareKit.isLoggedToFacebook(function(isLoggedIn) { authAndShareToFacebook(isLoggedIn, message, url); });
+				window.plugins.shareKit.isLoggedToFacebook(function(isLoggedIn) { authAndShareToFacebook(isLoggedIn, message, null); });
 				console.log("Done");
 				break;
 			case 1:
 				console.log("Sharing to Twitter!");
-				window.plugins.shareKit.isLoggedToTwitter(function(isLoggedIn) { authAndShareToTwitter(isLoggedIn, message, url); });
+				window.plugins.shareKit.isLoggedToTwitter(function(isLoggedIn) { authAndShareToTwitter(isLoggedIn, message, null); });
 				window.plugins.shareKit.shareToTwitter(message, url);
 				console.log("Done");
 				break;
@@ -61,7 +57,16 @@ function onFail(mesage) {
 }
 
 $(function() {
-	$('#share_1').click(function() {
-		showSharingSheet();
+	$('#share_home_screen').click(function() {
+		var message = "Test message from Instadate";
+		var subject = "Check out this date!";
+		var body = "I have shared a date with you, check it out!";
+		showSharingSheet(message, subject, body);
+	});
+	$('#share_story_screen').click(function() {
+		var message = "Test message from Instadate";
+		var subject = "Check out this date!";
+		var body = "I have shared a date with you, check it out!";
+		showSharingSheet(message, subject, body);
 	});
 });
