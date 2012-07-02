@@ -5,7 +5,12 @@ $( document ).bind( 'mobileinit', function(){
   $.mobile.loader.prototype.options.html = "";
 });
 
-
+$(function() {
+	$('#refreshButton').click(function() {
+		console.log("Refresh!");
+		$('#story_submit').click();
+	})
+});
 	
 var Story = {};
 	

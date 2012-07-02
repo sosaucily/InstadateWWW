@@ -76,12 +76,7 @@
 	{		
 		document.addEventListener('deviceready', function() {
 			try {
-			//alert('Device is ready! Make sure you set your app_id below this alert.');
-			//FB.init({ appId: '322572417779217', nativeInterface: CDV.FB, useCachedDialogs: false });
-			//document.getElementById('data').innerHTML = "";
-			//window.plugins.shareKit.isLoggedToFacebook(function(FBStatus) {
-			//	console.log("FB STATUS: " + FBStatus);
-			//});
+				//Do something.. if you dare.
 			} catch (e) {
 				alert(e);
 			}
@@ -128,11 +123,6 @@
 	    <div data-role="content" class="content" data-theme="a" style="margin-top:0px">
 		    <form id="story_form" onsubmit="return validate_location_input()">
 		        <label for="zip_search" style="margin-bottom:-3px;">Where is your date?</label>
-		<!--
-				<div class="ui-grid-a">
-					<div class="ui-block-a"><input type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
-					<div class="ui-block-b"><a id="findme" href="#" data-role="button" data-icon="gps" data-theme="a">Near me</a></div>
-				</div><!-- -->
 
 				<div class="insta-zip-col1"><input placeholder="Zipcode" type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
 				<div class="insta-zip-col2"><a id="findme" href="#" data-role="button" data-icon="gps" data-mini="true" data-theme="a">Near me</a></div>
@@ -148,13 +138,6 @@
 		            <input type="radio" name="activity" id="radiobtn-3" value="indoor" />
 		            <label for="radiobtn-3">Indoor</label>
 		        </fieldset>
-	<!--
-				<label for="raining_switch">Raining?</label>
-				<select name="raining" id="raining_switch" data-role="slider" data-theme="a">
-					<option value="false">It's Dry</option>
-					<option value="true">It's Wet</option>
-				</select>
-	        -->
 
 	        	<br />
 		        <label for="story_date">When is your date?</label>
@@ -175,16 +158,6 @@
 				<a href="#story" data-transition="flip" id="story_submit" data-role="button" data-theme="b">Plan my Date!</a>
 			</form>
 		</div><!--END OF: Home form content section -->
-
-	    <!-- Social Media-->
-	<!--
-	    <div class="social-media">
-	        <a class="twitter" href="#"><img src="images/twitter.png" /></a>
-	        <a class="facebook" href="#"><img src="images/facebook.png" /></a>
-	        <a class="rss" href="#"><img src="images/rss.png" /></a>
-	    </div>
-	-->
-	<!--END OF: Social Media -->
 
 	</div><!--END OF: Wrapper -->
 	   <!-- Footer -->
@@ -213,8 +186,9 @@
 
 	    <!-- Header -->
 	    <div data-role="header" class="header story-header">
-	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip">Back</a> 
+	       <a href="#" data-rel="back" data-icon="arrow-l" data-transition="flip"></a> 
 	       <h4>Your Date</h4>
+		   <a href="#" id="refreshButton" data-icon="refresh"></a>
 	    </div><!-- END OF: Header -->
 
 	    <!-- Wrapper -->
