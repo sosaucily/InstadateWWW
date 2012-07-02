@@ -217,27 +217,27 @@ $(function() {
 function showSharingSheet() {
 	console.log("Running showSharingSheet function");
 	var buttons = ["Share to Facebook", "Share to Twitter", "Share via Email", "Cancel"];
-	var delegate = nativeControls.createActionSheet(buttons, null, 3, null);
+	var delegate = window.plugins.nativeControls.createActionSheet(buttons, null, 3, 3);
 	delegate.onActionSheetDismissed = function(index)
 	{
 		if (index > -1)
 		{
-			alert ('option' + index);
+			console.log('option' + index);
 		}
 	};
 	console.log("showSharingSheet function complete");
 }
-	
+
 function onPhotoURISuccess() {
 	alert('Successfully shared');
 }
-	
+
 function onFail(mesage) {
 	alert('Sharing failed with message: ' + message);
 }
 
 $(function() {
-	var share_elem = $('#share');
-	share_elem.onclick(showSharingSheet());
-	console.log("Share button clicked");
-}
+	$('#share_1').click(function() {
+		showSharingSheet();
+	});
+});

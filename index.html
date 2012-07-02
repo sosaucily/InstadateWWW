@@ -36,6 +36,7 @@
 	<script src="javascripts/jquery.cycle.all.js" type="text/javascript"></script>
 	<script src="javascripts/jquery.mobile.datebox.min.js" type="text/javascript"></script>
 	<script src="javascripts/jquery.mobile.actionsheet.js" type="text/javascript"></script>
+	<script src="javascripts/NativeControls.js" type="text/javascript"></script>
 	<script src="javascripts/story.js" type="text/javascript"></script>
 	<script src="javascripts/application.js" type="text/javascript"></script>
 	<script src="javascripts/mustache.js" type="text/javascript"></script>
@@ -43,7 +44,6 @@
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCloHHOTgUAwKqVVpovHVzGioPQ8RkQeTY&sensor=false" type="text/javascript"></script>
 	<script src="javascripts/geolocate.js" type="text/javascript"></script>
 	<script src="javascripts/ShareKitPlugin.js" type="text/javascript"></script>
-	<script src="javascripts/NativeControls.js" type="text/javascript"></script>
 	
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <meta name="apple-mobile-web-app-capable" content="yes">
@@ -97,8 +97,6 @@
 	{
 		// do your thing!
 		//navigator.notification.alert("Cordova is working")
-		var options = "bottom";
-		nativeControls = window.plugins.nativeControls;
 	}
 	
     </script>
@@ -191,7 +189,13 @@
 	</div><!--END OF: Wrapper -->
 	   <!-- Footer -->
 	<div data-role="footer" class="footer" data-position="fixed">
-	       <h4>Copyright 2012, Instadate - <a href="#" id="share">Share</a></h4>
+		<div width="100%" height="100%">
+			<div class="share_icon"></div>
+			<div class="share_text">
+				<a href="#" id="share_1"><h4>Share with your friends</h4>
+				</a>
+			</div>
+		</div>
 	</div><!-- END OF: Footer -->
 	<script type="text/javascript"> 
 /*	  $(function() {
@@ -231,7 +235,7 @@
 
 	    <!-- Footer -->
 		<div data-role="footer" class="footer story-footer" data-position="fixed">
-	        <h4>Copyright 2012, Instadate - <a href="#" id="share">Share</a></h4>
+	        <h4>Copyright 2012, Instadate - <a href="#" id="share_2">Share</a></h4>
 		</div><!-- END OF: Footer -->
 
 	</div><!-- END OF: Story -->
@@ -301,5 +305,4 @@
 			<!-- END OF: Address and Phone -->
 		</div>
 	</script>
-
 </html>
