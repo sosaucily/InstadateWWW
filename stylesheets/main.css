@@ -194,18 +194,20 @@
 
 .share_text {
 	display: inline-block;
-	vertical-align: top;
+	/*vertical-align: top;*/
+	height: 43px;
 }
+
 .share_icon {
 	background: url(../images/share-icon-2x.png);
 	background-size: 36px 26px;
 	height: 26px;
 	width: 36px;
 	display: inline-block;
-	margin-top: 6px;
+	margin-top: 10px;
 }
 
-.footer h4 {
+.share_text h4  {
 	font-family: 'Terminal Dosis', sans-serif;
 	font-weight: 700;
 }
