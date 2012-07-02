@@ -185,34 +185,13 @@
 }
 
 .footer_wrapper {
-	height: 43px;
+	height: 42px;
+	background: url(../images/footer-2x.png);
+	background-size: 100% 42px;
 }
 
 #share_1 {
-	/*display: block;*/
-}
-#share_1:link { text-decoration:none; color:#000000;}
-#share_1:visited { text-decoration:none; color:#000000;}
-#share_1:hover { text-decoration:none; color:#000000;}
-#share_1:active { text-decoration:none; color:#000000;}
-
-.share_text {
-	display: inline-block;
-	/*vertical-align: top;*/
-	font-family: 'Terminal Dosis', sans-serif;
-	font-weight: 700;
-}
-
-.share_icon {
-	background: url(../images/share-icon-2x.png);
-	background-size: 36px 26px;
-	height: 26px;
-	width: 36px;
-	display: inline-block;
-	/*margin-top: 10px;*/
-}
-
-.share_text h4  {
+	width: 100%; 
 }
 
 /* Dialog Box */
