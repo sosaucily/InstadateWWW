@@ -184,8 +184,12 @@
 	display: inline-block;
 }
 
+.footer_wrapper {
+	height: 43px;
+}
+
 #share_1 {
-	display: inline-block;
+	/*display: block;*/
 }
 #share_1:link { text-decoration:none; color:#000000;}
 #share_1:visited { text-decoration:none; color:#000000;}
@@ -195,7 +199,8 @@
 .share_text {
 	display: inline-block;
 	/*vertical-align: top;*/
-	height: 43px;
+	font-family: 'Terminal Dosis', sans-serif;
+	font-weight: 700;
 }
 
 .share_icon {
@@ -204,12 +209,10 @@
 	height: 26px;
 	width: 36px;
 	display: inline-block;
-	margin-top: 10px;
+	/*margin-top: 10px;*/
 }
 
 .share_text h4  {
-	font-family: 'Terminal Dosis', sans-serif;
-	font-weight: 700;
 }
 
 /* Dialog Box */
