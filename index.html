@@ -43,6 +43,7 @@
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCloHHOTgUAwKqVVpovHVzGioPQ8RkQeTY&sensor=false" type="text/javascript"></script>
 	<script src="javascripts/geolocate.js" type="text/javascript"></script>
 	<script src="javascripts/ShareKitPlugin.js" type="text/javascript"></script>
+	<script src="javascripts/NativeControls.js" type="text/javascript"></script>
 	
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <meta name="apple-mobile-web-app-capable" content="yes">
@@ -96,6 +97,8 @@
 	{
 		// do your thing!
 		//navigator.notification.alert("Cordova is working")
+		var options = "bottom";
+		nativeControls = window.plugins.nativeControls;
 	}
 	
     </script>
@@ -125,14 +128,6 @@
 	        <img src="images/instadate-logo.png"  alt="Instadate">
 	    </div><!--END OF: Logo -->
 	    <div data-role="content" class="content" data-theme="a" style="margin-top:0px">
-	    	<div id="shareData"><h2>Share this Date!</h2>
-			    <a data-role="button" id="facebookShareButton2" href="#">Facebook</a>
-			    <a data-role="button" href="#">Twitter</a>
-			    <a data-role="button" href="#">Email</a>
-			    <br/>
-			    <!-- This close button is optional. The widget also closes if you click or touch outside of the popup -->
-			    <a data-role="button" data-rel="close" href="#">Cancel</a>
-			</div>
 		    <form id="story_form" onsubmit="return validate_location_input()">
 		        <label for="zip_search" style="margin-bottom:-3px;">Where is your date?</label>
 		<!--
@@ -196,7 +191,7 @@
 	</div><!--END OF: Wrapper -->
 	   <!-- Footer -->
 	<div data-role="footer" class="footer" data-position="fixed">
-	       <h4>Copyright 2012, Instadate - <a href="#" id="opensharedialog" data-role="actionsheet" data-sheet="shareData">Share</a></h4>
+	       <h4>Copyright 2012, Instadate - <a href="#" id="share">Share</a></h4>
 	</div><!-- END OF: Footer -->
 	<script type="text/javascript"> 
 /*	  $(function() {
@@ -228,16 +223,6 @@
 	<!--    <div class="wrapper"> -->
 
 		        <!-- Content -->
-		<div data-role="content" class="content" id="temp_content" style="height:0;width:0;padding:0;margin:0;">
-			<div id="shareData2" ><h4>Share this Date!</h4>
-			    <a data-role="button" id="facebookShareButton" href="#">Facebook</a>
-			    <a data-role="button" href="#">Twitter</a>
-			    <a data-role="button" href="#">Email</a>
-			    <br/>
-			    <!-- This close button is optional. The widget also closes if you click or touch outside of the popup -->
-			    <a data-role="button" data-rel="close" href="#">Cancel</a>
-			</div>
-		</div>
 					<div id="story_list" class="story_list" >
 
 					</div>
@@ -246,26 +231,12 @@
 
 	    <!-- Footer -->
 		<div data-role="footer" class="footer story-footer" data-position="fixed">
-	        <h4>Copyright 2012, Instadate - <a href="#" id="opensharedialog2" data-role="actionsheet" data-sheet="shareData2">Share</a></h4>
+	        <h4>Copyright 2012, Instadate - <a href="#" id="share">Share</a></h4>
 		</div><!-- END OF: Footer -->
 
 	</div><!-- END OF: Story -->
 
 	<!-- SHARE MODAL -->
-	<div data-role="page" id="share" data-title="Share" style="height:100px;">
-
-	    <!-- Wrapper -->
-		<div class="wrapper"> -->
-
-			<!-- Content -->
-			<div data-role="content" class="content"> -->
-				<div id="story_list" class="story_list" >
-				</div>
-			</div><!-- END OF: Content -->
-
-		</div><!--END OF: Wrapper -->
-
-	</div><!-- END OF: Story -->
 
   </body>
 

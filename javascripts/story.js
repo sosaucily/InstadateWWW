@@ -4,6 +4,8 @@ $( document ).bind( 'mobileinit', function(){
   $.mobile.loader.prototype.options.theme = "a";
   $.mobile.loader.prototype.options.html = "";
 });
+
+
 	
 var Story = {};
 	
@@ -211,3 +213,31 @@ $(function() {
 	});
 	
 });
+
+function showSharingSheet() {
+	console.log("Running showSharingSheet function");
+	var buttons = ["Share to Facebook", "Share to Twitter", "Share via Email", "Cancel"];
+	var delegate = nativeControls.createActionSheet(buttons, null, 3, null);
+	delegate.onActionSheetDismissed = function(index)
+	{
+		if (index > -1)
+		{
+			alert ('option' + index);
+		}
+	};
+	console.log("showSharingSheet function complete");
+}
+	
+function onPhotoURISuccess() {
+	alert('Successfully shared');
+}
+	
+function onFail(mesage) {
+	alert('Sharing failed with message: ' + message);
+}
+
+$(function() {
+	var share_elem = $('#share');
+	share_elem.onclick(showSharingSheet());
+	console.log("Share button clicked");
+}
