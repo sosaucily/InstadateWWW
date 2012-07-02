@@ -28,6 +28,16 @@
   font-weight: 700;
 }
 
+#backButton .ui-btn-inner {
+	height: 10px;
+	padding-left: 10px;
+}
+
+#refreshButton .ui-btn-inner {
+	height: 10px;
+	padding-left: 10px;
+}
+
 .indoor {
   margin-top: 0px;
   margin-bottom: 0px;
