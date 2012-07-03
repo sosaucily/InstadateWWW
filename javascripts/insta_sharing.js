@@ -1,20 +1,20 @@
 function authAndShareToFacebook(isLoggedIn, message, url) {
 	if (isLoggedIn) {
 		window.plugins.shareKit.facebookConnect();
-		window.plugins.shareKit.shareToFacebook(message, url);
+		window.plugins.shareKit.shareToFacebook(message + "http://theoyster.me/stories/" + Story.current_story.story_id, url);
 	}
 	else {
-		window.plugins.shareKit.shareToFacebook(message, url);
+		window.plugins.shareKit.shareToFacebook(message + "http://theoyster.me/stories/" + Story.current_story.story_id;, url);
 	}
 }
 
 function authAndShareToTwitter(isLoggedIn, message, url) {
 	if (isLoggedIn) {
 		window.plugins.shareKit.twitterConnect();
-		window.plugins.shareKit.shareToTwitter(message, url);
+		window.plugins.shareKit.shareToTwitter(message + "theoyster.me/stories/" + Story.current_story.story_id, url);
 	}
 	else {
-		window.plugins.shareKit.shareToTwitter(message, url);
+		window.plugins.shareKit.shareToTwitter(message + "theoyster.me/stories/" + Story.current_story.story_id, url);
 	}
 }
 
@@ -57,16 +57,16 @@ function onFail(mesage) {
 }
 
 $(function() {
-	$('#share_home_screen').click(function() {
-		var message = window.search_city + " is my Oyster - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
+	$('#share_story_screen').click(function() {
+		var message = window.search_city + " is my Oyster - ";
 		var subject = window.search_city + " is my Oyster";
-		var body = "Check out what I just planned with Oyster - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
+		var body = "Check out what I just planned with Oyster - " + "theoyster.me/stories/" + Story.current_story.story_id;
 		showSharingSheet(message, subject, body);
 	});
-	$('#share_story_screen').click(function() {
-		var message = "Check out Oyster, the best way to discover new things near you - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
-		var subject = "Check out Oyster, the best way to discover new things near you - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
-		var body = "Oyster helps you find new and interesting things to do near you. Get it now - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
+	$('#share_home_screen').click(function() {
+		var message = "Check out Oyster, the best way to discover new things near you - ";
+		var subject = "Check out Oyster";
+		var body = "Oyster helps you find new and interesting things to do near you. Get it now - " + "theoyster.me/stories/" + Story.current_story.story_id;
 		showSharingSheet(message, subject, body);
 	});
 });
