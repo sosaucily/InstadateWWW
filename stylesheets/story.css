@@ -28,9 +28,17 @@
   font-weight: 700;
 }
 
+#backButton {
+	margin-top: 15px;
+}
+
 #backButton .ui-btn-inner {
 	height: 10px;
 	padding-left: 10px;
+}
+
+#refreshButton {
+	margin-top: 15px;
 }
 
 #refreshButton .ui-btn-inner {

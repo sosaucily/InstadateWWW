@@ -58,15 +58,15 @@ function onFail(mesage) {
 
 $(function() {
 	$('#share_home_screen').click(function() {
-		var message = "Test message from Instadate";
-		var subject = "Check out this date!";
-		var body = "I have shared a date with you, check it out!";
+		var message = window.search_city + " is my Oyster - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
+		var subject = window.search_city + " is my Oyster";
+		var body = "Check out what I just planned with Oyster - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
 		showSharingSheet(message, subject, body);
 	});
 	$('#share_story_screen').click(function() {
-		var message = "Test message from Instadate";
-		var subject = "Check out this date!";
-		var body = "I have shared a date with you, check it out!";
+		var message = "Check out Oyster, the best way to discover new things near you - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
+		var subject = "Check out Oyster, the best way to discover new things near you - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
+		var body = "Oyster helps you find new and interesting things to do near you. Get it now - " + "http://theoyster.me/activity/" + Story.current_story.story_id;
 		showSharingSheet(message, subject, body);
 	});
 });
