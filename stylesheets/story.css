@@ -29,7 +29,7 @@
 }
 
 #backButton {
-	margin-top: 15px;
+	margin-top: 3px;
 }
 
 #backButton .ui-btn-inner {
@@ -38,7 +38,7 @@
 }
 
 #refreshButton {
-	margin-top: 15px;
+	margin-top: 3px;
 }
 
 #refreshButton .ui-btn-inner {
