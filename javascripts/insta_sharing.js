@@ -4,7 +4,7 @@ function authAndShareToFacebook(isLoggedIn, message, url) {
 		window.plugins.shareKit.shareToFacebook(message + "http://theoyster.me/stories/" + Story.current_story.story_id, url);
 	}
 	else {
-		window.plugins.shareKit.shareToFacebook(message + "http://theoyster.me/stories/" + Story.current_story.story_id;, url);
+		window.plugins.shareKit.shareToFacebook(message + "http://theoyster.me/stories/" + Story.current_story.story_id, url);
 	}
 }
 

@@ -178,7 +178,7 @@ $(function() {
 
 		if (location.match(valid_zip)==null){
 			if (zip == "" || zip == null){
-		  		alert("Please either enter a zip code or click the \"Near My\" button");
+		  		alert("Please either enter a zip code or click the \"Near Me\" button");
 		  		click_event.preventDefault();
 		  		return false;
 		  	}
