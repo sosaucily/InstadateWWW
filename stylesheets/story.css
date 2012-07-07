@@ -138,8 +138,13 @@
 	#yelp_image {
 		width:50px;
 		height:25px;
+		margin:-6px 0 -8px 0px;
 	}
-	
+	#upcoming_image {
+		width:125px;
+		height:20px;
+		margin:-6px 0 -6px 0px;
+	}
 	#business_image_url {
 		width:70px;
 		height:70px;
@@ -149,6 +154,12 @@
 #yelp_image {
 	width:50px;
 	height:25px;
+	margin:-6px 0 -8px 0px;
+}
+#upcoming_image {
+	width:125px;
+	height:20px;
+	margin:-6px 0 -6px 0px;
 }
 #business_image_url {
 	width:70px;

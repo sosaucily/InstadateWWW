@@ -32,8 +32,14 @@ initialize_story = function(options) {
 	{
 		curr_chap_data = Story.current_story.activities[chap];
 		curr_id = Story.chapter_ids[chap];
-		if (curr_chap_data.image_url == null) {
-			curr_chap_data.image_url = document.baseURI + "/images/default-activity-icon.png";
+		try {
+			if (curr_chap_data.image_url == null || curr_chap_data.image_url == "") {
+				curr_chap_data.image_url = document.baseURI + "/images/default-activity-icon.png";
+			}
+		} catch (e)
+		{
+			console.log(e);
+			console.log(curr_chap_data);
 		}
 		
 		click_phone = ""
@@ -41,7 +47,7 @@ initialize_story = function(options) {
 		try {
 			if (curr_chap_data.phone != null ) {
 				click_phone = curr_chap_data.phone.replace(/-/g,"").substr(2,curr_chap_data.phone.length-2);
-				display_phone = "(" + click_phone.substring(0,3) + ") " + click_phone.substring(3,6) + "-" + click_phone.substring(6,10)
+				display_phone = "(" + click_phone.substring(0,3) + ") " + click_phone.substring(3,6) + "-" + click_phone.substring(6,10);
 			}
 		}
 		catch(err){
@@ -60,6 +66,21 @@ initialize_story = function(options) {
 		source_category = curr_chap_data.source_category[0]
 		if (source_category.length > 20)
 			source_category = source_category.substring(0,17) + "...";
+			
+		var api_image_url = "", api_image_class = "";
+		switch(curr_chap_data.system)
+		{
+			case "yelp":
+				console.log("yelp activity");
+				api_image_class = "yelp_image";
+				api_image_url = "images/yelp_logo_100x50-2x.png"
+				break;
+			case "upcoming":
+				console.log("upcoming activity");
+				api_image_class = "upcoming_image";
+				api_image_url = "images/upcoming_logo2.gif"
+				break;
+		}
 
 		var map_url = "http://maps.google.com/maps?q=" + curr_chap_data.latitude + "," + curr_chap_data.longitude
 		
@@ -84,7 +105,9 @@ initialize_story = function(options) {
 			click_phone: click_phone,
 			display_address: display_address,
 			display_phone: display_phone,
-			business_url: curr_chap_data.business_url
+			business_url: curr_chap_data.business_url,
+			api_image_class: api_image_class,
+			api_image_url: api_image_url
 		}
 		$('#story_list').append(ich.chapter_details_html(data));
 		$('#' + curr_id + "_details").trigger("create");
