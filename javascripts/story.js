@@ -35,7 +35,7 @@ initialize_story = function(options) {
 		try {
 			if (curr_chap_data.image_url == null || curr_chap_data.image_url == "") {
 				curr_chap_data.image_url = "http://theoyster.me/images/default-activity-icon.png";
-				//Hard coding this like an a-hole cause it wasn't working right
+				//BUG - Why pull this off the web instead of using local??
 			}
 		} catch (e)
 		{
@@ -215,7 +215,7 @@ $(function() {
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
 			if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
 				//Changing the backend URL because we're on an iphone or iphone simulator
-				window.instadateConfig["data_server_url"] = "http://www.instadateapp.com/";
+				window.instadateConfig["data_server_url"] = "http://theoyster.me/";
 			}
 		}
 		console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
