@@ -34,7 +34,8 @@ initialize_story = function(options) {
 		curr_id = Story.chapter_ids[chap];
 		try {
 			if (curr_chap_data.image_url == null || curr_chap_data.image_url == "") {
-				curr_chap_data.image_url = document.baseURI + "/images/default-activity-icon.png";
+				curr_chap_data.image_url = "http://theoyster.me/images/default-activity-icon.png";
+				//Hard coding this like an a-hole cause it wasn't working right
 			}
 		} catch (e)
 		{
