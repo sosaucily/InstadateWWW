@@ -18,9 +18,9 @@ var expanded;
 	
 var initialize_story;
 
-Story.chapter_ids = ["chapter_1","chapter_2","chapter_3"];
-
 initialize_story = function(options) {
+	Story.chapter_ids = ["chapter_1","chapter_2","chapter_3"];
+	
 	Story.map_loaded = [0,0,0];
 	expanded = 0;
 	
@@ -117,11 +117,13 @@ initialize_story = function(options) {
 		$('#' + curr_id + "_details").trigger("create");
 	}
 	
+	getAllMapsOnce();
+	
 	$('#chapter_1').click (function() {
 		if (expanded != 1) {
 			expanded = 1;
 			hide_then_expand(1, function() { $('#chapter_1_details').slideToggle(400); } );
-			getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 1);
+			//getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 1);
 		}
 		else {
 			expanded = 0;
@@ -137,7 +139,7 @@ initialize_story = function(options) {
 		if (expanded != 2) {
 			expanded = 2;
 			hide_then_expand(2, function() { $('#chapter_2_details').slideToggle(400); } );
-			getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 2);
+			//getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 2);
 		}
 		else {
 			expanded = 0;
@@ -153,7 +155,7 @@ initialize_story = function(options) {
 		if (expanded != 3) {
 			expanded = 3;
 			hide_then_expand(3, function() { $('#chapter_3_details').slideToggle(400); } );
-			getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 3);
+			//getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 3);
 		}
 		else {
 			expanded = 0;
@@ -164,16 +166,28 @@ initialize_story = function(options) {
 			} );
 		}
 	});
+	
+	
 
 }
 
 function fadeOutForRefresh() {
 	for(chap = 0; chap < Story.chapter_ids.length; chap++) {
-		$('#' + Story.chapter_ids[chap]).toggle(400, function() {
-			$.mobile.showPageLoadingMsg();
-			submit_story();
-		});
+		if(chap == 2) {
+			$('#' + Story.chapter_ids[chap]).toggle(600, function() {
+				var $this = $( this ),
+					theme = $this.jqmData("theme") || $.mobile.loadingMessageTheme,
+					msgText = $this.jqmData("msgtext") || $.mobile.loadingMessage,
+					textonly = !!$this.jqmData("textonly");
+				$.mobile.showPageLoadingMsg(theme, msgText, textonly);
+			});
+		}
+		else {
+			$('#' + Story.chapter_ids[chap]).toggle(400, function() {
+			});
+		}
 	}
+	submit_story();
 }
 
 function hide_then_expand(chapter_elem, details_slide)
@@ -194,6 +208,20 @@ function hide_then_expand(chapter_elem, details_slide)
 	}
 }
 
+function getAllMapsOnce(lat,lng,elem)
+{
+	for(chap = 0; chap < Story.chapter_ids.length; chap++) {
+		lat = Story.current_story.activities[chap].latitude;
+		lng = Story.current_story.activities[chap].longitude;
+		if (Story.map_loaded[chap] == 0)
+		{
+			Story.map_loaded[chap] = 1;
+			console.log("Getting map for chap: " + (chap+1));
+			map_src = getMap(lat,lng,"themap" + (chap+1) );
+			$('#themap' + (chap+1)).html('<img src="' + map_src + '" style="width:288px;height:87" />');
+		}
+	}
+}
 
 function getMapOnce(lat,lng,elem)
 {
@@ -266,13 +294,12 @@ function submit_story() {
 	}
 	console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
 
-	//$.mobile.showPageLoadingMsg();
-	//Clear any existing data
-	$('#story_list').html('');
 	$.ajax({
 	  type: 'post',
 	  data: $("#story_form").serialize(),
 	  success: function(data) {
+		$('#story_list').html('');
+		Story = {};
 		initialize_story(jQuery.parseJSON(data));
 		$.mobile.hidePageLoadingMsg();
 	  },
@@ -280,24 +307,3 @@ function submit_story() {
 	});
 	return true;
 }
-
-$(function() {
-	$(document).on("click", "#story_submit", function() {
-			var $this = $( this ),
-				theme = $this.jqmData("theme") || $.mobile.loadingMessageTheme,
-				msgText = $this.jqmData("msgtext") || $.mobile.loadingMessage,
-				textonly = !!$this.jqmData("textonly");
-			$.mobile.showPageLoadingMsg(theme, msgText, textonly);
-		})
-
-//	$('#story_submit').click(function(click_event) {
-//		
-//	});
-	$('#addr_search').click(function() {
-		$('#addr_search').val("");
-		$('#zip_search').val("");
-		$('#lat_search').val("");
-		$('#lng_search').val("");
-	});
-	
-});
