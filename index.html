@@ -82,13 +82,13 @@
 			}
 			}, false);
 		document.addEventListener("deviceready", onDeviceReady, false);
-		$.mobile.showPageLoadingMsg();
 		console.log("checking geo");
 		if (!navigator.geolocation) {
 			console.log("no geo, redirecting to customize page");
 			window.location.replace("#customize");
 		}
 		console.log("calling geo");
+		$.mobile.showPageLoadingMsg();
 		navigator.geolocation.getCurrentPosition(afterGeoSuccess, error);
 	}
 	
