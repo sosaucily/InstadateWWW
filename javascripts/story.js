@@ -213,7 +213,9 @@ function getMap(lat,lng, elementid)
 $(function() {
 	$('#story').live('pageshow',function(event, ui){
 		console.log( "Loading Story List");
-		$.mobile.showPageLoadingMsg();
+		$.mobile.showPageLoadingMsg("b");
+		//With JqM 1.2 will have a better loading system...
+		//$.mobile.loading(HTML=...);
 	});
 	/*$('#story').live('page',function(event, ui){
 		console.log( "Finished Loading Story list");
@@ -264,7 +266,7 @@ $(function() {
 		  data: $("#story_form").serialize(),
 		  success: function(data) {
 			initialize_story(jQuery.parseJSON(data));
-			$.mobile.hidePageLoadingMsg();
+			//$.mobile.hidePageLoadingMsg();
 		  },
 		  url: window.instadateConfig["data_server_url"] + "story/create"
 		});
