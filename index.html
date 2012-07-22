@@ -82,6 +82,14 @@
 			}
 			}, false);
 		document.addEventListener("deviceready", onDeviceReady, false);
+		$.mobile.showPageLoadingMsg();
+		console.log("checking geo");
+		if (!navigator.geolocation) {
+			console.log("no geo, redirecting to customize page");
+			window.location.replace("#customize");
+		}
+		console.log("calling geo");
+		navigator.geolocation.getCurrentPosition(afterGeoSuccess, error);
 	}
 	
 	/* When this function is called, Cordova has been initialized and is ready to roll */
@@ -92,6 +100,11 @@
 	{
 		// do your thing!
 		//navigator.notification.alert("Cordova is working")
+
+	}
+	
+	function afterGeoSuccess(position) {
+		geo_success(position, submit_story);
 	}
 	
     </script>
@@ -111,72 +124,6 @@
 	    <link href="Default@2x~iphone.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 
 
-	<!-- HOMEPAGE -->
-	<div data-role="page" id="homepage" data-title="Homepage">
-
-	<!-- Wrapper -->
-	<div class="wrapper">
-	    <!-- Logo -->	
-		<div class="logo">
-	        <img src="images/instadate-logo.png"  alt="Instadate">
-	    </div><!--END OF: Logo -->
-	    <div data-role="content" class="content" data-theme="a" style="margin-top:0px">
-		    <form id="story_form" onsubmit="return validate_location_input()">
-		        <label for="zip_search" style="margin-bottom:-3px;">Where is your date?</label>
-
-				<div class="insta-zip-col1"><input placeholder="Zipcode" type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
-				<div class="insta-zip-col2"><a id="findme" href="#" data-role="button" data-icon="gps" data-mini="true" data-theme="a">Near me</a></div>
-	<!-- -->
-				<input type="text" name="zip_search" id="zip_search" value="" style="display:none;" />
-				<input type="text" name="lat_search" id="lat_search" value="" style="display:none;" />
-				<input type="text" name="lng_search" id="lng_search" value="" style="display:none;" />
-	            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:25px; margin-top:2px;">
-		            <input type="radio" name="activity" id="radiobtn-1" checked="checked" value="anything" />
-		            <label for="radiobtn-1">Anything</label>
-		            <input type="radio" name="activity" id="radiobtn-2" value="outdoor" />
-		            <label for="radiobtn-2">Outdoor</label>
-		            <input type="radio" name="activity" id="radiobtn-3" value="indoor" />
-		            <label for="radiobtn-3">Indoor</label>
-		        </fieldset>
-
-	        	<br />
-		        <label for="story_date">When is your date?</label>
-				<div>
-					<input name="story_date" id="story_date" type="date" data-role="datebox" placeholder="Select date (blank for today)" 
-				   		data-options='{"mode": "datebox","afterToday":true,"calTodayButton":true, "defaultDate":"2013-01-01"}' />
-				</div>
-				<!--Change mode:datebox to mode:calbox for full cal view-->
-	<!--	        <div data-role="fieldcontain" class="filter daypart"> -->
-		          <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:60px; margin-top:5px;">
-		            <input type="radio" name="daypart" id="radiobtn-4" value="day" />
-		            <label for="radiobtn-4">Daytime</label>
-		            <input type="radio" name="daypart" id="radiobtn-5" checked="checked" class="ui-btn-active" class="" value="evening" />
-		            <label for="radiobtn-5">Evening</label>
-		          </fieldset>
-	<!--	        </div> -->
-				<br />
-				<a href="#story" data-transition="flip" id="story_submit" data-role="button" data-theme="b">Oyster me!</a>
-			</form>
-		</div><!--END OF: Home form content section -->
-
-	</div><!--END OF: Wrapper -->
-	   <!-- Footer -->
-	<div data-role="footer" class="footer" data-position="fixed">
-		<div id="share_home_screen" class="footer_wrapper"></div>
-	</div><!-- END OF: Footer -->
-	<script type="text/javascript"> 
-/*	  $(function() {
-		$('#story_submit').click (function() {
-		  	
-
-		});
-		
-		
-	  }); */
-	</script>
-	</div><!-- END OF: Homepage -->
-
-
 
 
 	<!-- STORY -->
@@ -186,7 +133,7 @@
 
 	    <!-- Header -->
 	    <div data-role="header" class="header story-header">
-	       <a href="#" id="backButton" data-rel="back" data-icon="arrow-l" data-transition="flip"></a> 
+	       <a href="#customize" id="customizeButton" data-icon="gear" data-transition="flip"></a> 
 	       <h4>Your Oyster</h4>
 		   <a href="#" id="refreshButton" data-icon="refresh"></a>
 	    </div><!-- END OF: Header -->
@@ -209,7 +156,63 @@
 
 	</div><!-- END OF: Story -->
 
-	<!-- SHARE MODAL -->
+
+
+	<!-- HOMEPAGE -->
+	<div data-role="page" id="customize" data-title="Customize">
+
+		<!-- Wrapper -->
+		<div class="wrapper">
+		    <!-- Logo -->	
+			<div class="logo">
+		        <img src="images/instadate-logo.png"  alt="Instadate">
+		    </div><!--END OF: Logo -->
+		    <div data-role="content" class="content" data-theme="a" style="margin-top:0px">
+			    <form id="story_form" onsubmit="return validate_location_input()">
+			        <label for="zip_search" style="margin-bottom:-3px;">Where is your date?</label>
+
+					<div class="insta-zip-col1"><input placeholder="Zipcode" type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
+					<div class="insta-zip-col2"><a id="findme" href="#" data-role="button" data-icon="gps" data-mini="true" data-theme="a">Near me</a></div>
+		<!-- -->
+					<input type="text" name="zip_search" id="zip_search" value="" style="display:none;" />
+					<input type="text" name="lat_search" id="lat_search" value="" style="display:none;" />
+					<input type="text" name="lng_search" id="lng_search" value="" style="display:none;" />
+		            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:25px; margin-top:2px;">
+			            <input type="radio" name="activity" id="radiobtn-1" checked="checked" value="anything" />
+			            <label for="radiobtn-1">Anything</label>
+			            <input type="radio" name="activity" id="radiobtn-2" value="outdoor" />
+			            <label for="radiobtn-2">Outdoor</label>
+			            <input type="radio" name="activity" id="radiobtn-3" value="indoor" />
+			            <label for="radiobtn-3">Indoor</label>
+			        </fieldset>
+
+		        	<br />
+			        <label for="story_date">When is your date?</label>
+					<div>
+						<input name="story_date" id="story_date" type="date" data-role="datebox" placeholder="Select date (blank for today)" 
+					   		data-options='{"mode": "datebox","afterToday":true,"calTodayButton":true, "defaultDate":"2013-01-01"}' />
+					</div>
+					<!--Change mode:datebox to mode:calbox for full cal view-->
+		<!--	        <div data-role="fieldcontain" class="filter daypart"> -->
+			          <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:60px; margin-top:5px;">
+			            <input type="radio" name="daypart" id="radiobtn-4" value="day" />
+			            <label for="radiobtn-4">Daytime</label>
+			            <input type="radio" name="daypart" id="radiobtn-5" checked="checked" class="ui-btn-active" class="" value="evening" />
+			            <label for="radiobtn-5">Evening</label>
+			          </fieldset>
+		<!--	        </div> -->
+					<br />
+					<a href="#story" data-transition="flip" id="story_submit" data-role="button" data-theme="b">Oyster me!</a>
+				</form>
+			</div><!--END OF: Home form content section -->
+
+		</div><!--END OF: Wrapper -->
+		   <!-- Footer -->
+		<div data-role="footer" class="footer" data-position="fixed">
+			<div id="share_home_screen" class="footer_wrapper"></div>
+		</div><!-- END OF: Footer -->
+	</div><!-- END OF: Homepage -->
+
 
   </body>
 

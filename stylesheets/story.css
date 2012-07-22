@@ -28,11 +28,11 @@
   font-weight: 700;
 }
 
-#backButton {
+#customizeButton {
 	margin-top: 5px;
 }
 
-#backButton .ui-btn-inner {
+#customizeButton .ui-btn-inner {
 	height: 10px;
 	padding-left: 10px;
 }
@@ -302,5 +302,5 @@ div.loading-visible {
 }
 
 .ui-loader-default {
-	opacity: 1;
+	opacity: .8;
 }

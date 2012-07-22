@@ -1,14 +1,14 @@
 $( document ).bind( 'mobileinit', function(){
-  $.mobile.loader.prototype.options.text = "loading";
-  $.mobile.loader.prototype.options.textVisible = false;
-  $.mobile.loader.prototype.options.theme = "a";
+  $.mobile.loader.prototype.options.text = "Loading your Oyster!";
+  $.mobile.loader.prototype.options.textVisible = true;
+  $.mobile.loader.prototype.options.theme = "b";
   $.mobile.loader.prototype.options.html = "";
 });
 
 $(function() {
 	$('#refreshButton').click(function() {
 		console.log("Refresh!");
-		$('#story_submit').click();
+		fadeOutForRefresh();
 	})
 });
 	
@@ -167,6 +167,14 @@ initialize_story = function(options) {
 
 }
 
+function fadeOutForRefresh() {
+	for(chap = 0; chap < Story.chapter_ids.length; chap++) {
+		$('#' + Story.chapter_ids[chap]).toggle(400, function() {
+			$.mobile.showPageLoadingMsg();
+			submit_story();
+		});
+	}
+}
 
 function hide_then_expand(chapter_elem, details_slide)
 {
@@ -178,7 +186,7 @@ function hide_then_expand(chapter_elem, details_slide)
 			count++;
 			//$('#' + Story.chapter_ids[chap]).slideToggle('slow');
 			if (count == 1)
-				$('#' + Story.chapter_ids[chap]).toggle(400) //toggle('fast');
+				$('#' + Story.chapter_ids[chap]).toggle(400); //toggle('fast');
 			else
 				$('#' + Story.chapter_ids[chap]).toggle(400,details_slide); //.toggle('fast', details_slide);
 			$('#chapter_'+(chap+1)+'_arrow').attr('src',"images/right-arrow.png");
@@ -213,7 +221,7 @@ function getMap(lat,lng, elementid)
 $(function() {
 	$('#story').live('pageshow',function(event, ui){
 		console.log( "Loading Story List");
-		$.mobile.showPageLoadingMsg("b");
+		$.mobile.showPageLoadingMsg();
 		//With JqM 1.2 will have a better loading system...
 		//$.mobile.loading(HTML=...);
 	});
@@ -222,6 +230,56 @@ $(function() {
 		$.mobile.hidePageLoadingMsg();
 	});*/
 });
+
+
+function submit_story() {
+	var user_location = window.addr_search;
+	
+	var zip = window.zip_search;
+
+	var valid_zip = /^\d{5}(-\d{4})?(?!-)$/
+	console.log ("location is " + user_location);
+	try {
+		if (user_location.match(valid_zip)==null){
+			if (zip == "" || zip == null){
+		  		alert("Please either enter a zip code or click the \"Near Me\" button");
+		  		//click_event.preventDefault();
+		  		return false;
+		  	}
+		}
+	} catch (err) {
+		//Not ready yet, probably
+		console.log(err);
+		return false;
+	}
+	if (zip == "" || zip == null){
+		$('#zip_search').val(user_location);
+		window.zip_search = user_location;
+	}
+
+
+	if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+		if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
+			//Changing the backend URL because we're on an iphone or iphone simulator
+			window.instadateConfig["data_server_url"] = "http://theoyster.me/";
+		}
+	}
+	console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
+
+	//$.mobile.showPageLoadingMsg();
+	//Clear any existing data
+	$('#story_list').html('');
+	$.ajax({
+	  type: 'post',
+	  data: $("#story_form").serialize(),
+	  success: function(data) {
+		initialize_story(jQuery.parseJSON(data));
+		$.mobile.hidePageLoadingMsg();
+	  },
+	  url: window.instadateConfig["data_server_url"] + "story/create"
+	});
+	return true;
+}
 
 $(function() {
 	$(document).on("click", "#story_submit", function() {
@@ -232,46 +290,9 @@ $(function() {
 			$.mobile.showPageLoadingMsg(theme, msgText, textonly);
 		})
 
-	$('#story_submit').click(function(click_event) {
-		var location = $('#addr_search').val();
-		var zip = $('#zip_search').val();
-
-		valid_zip = /^\d{5}(-\d{4})?(?!-)$/
-
-		if (location.match(valid_zip)==null){
-			if (zip == "" || zip == null){
-		  		alert("Please either enter a zip code or click the \"Near Me\" button");
-		  		click_event.preventDefault();
-		  		return false;
-		  	}
-		}
-		if (zip == "" || zip == null){
-			$('#zip_search').val(location);
-		}
-
-
-		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-			if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
-				//Changing the backend URL because we're on an iphone or iphone simulator
-				window.instadateConfig["data_server_url"] = "http://theoyster.me/";
-			}
-		}
-		console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
-
-		//$.mobile.showPageLoadingMsg();
-		//Clear any existing data
-		$('#story_list').html('');
-		$.ajax({
-		  type: 'post',
-		  data: $("#story_form").serialize(),
-		  success: function(data) {
-			initialize_story(jQuery.parseJSON(data));
-			//$.mobile.hidePageLoadingMsg();
-		  },
-		  url: window.instadateConfig["data_server_url"] + "story/create"
-		});
-		return true;
-	});
+//	$('#story_submit').click(function(click_event) {
+//		
+//	});
 	$('#addr_search').click(function() {
 		$('#addr_search').val("");
 		$('#zip_search').val("");

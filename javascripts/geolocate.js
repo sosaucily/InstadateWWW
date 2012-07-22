@@ -4,14 +4,14 @@ $(document).ready(function() {
     $('#findme').click(function() {
 		//alert ("checking location!");
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(success, error);
+            navigator.geolocation.getCurrentPosition(geo_success, error);
         } else {
             error('Geolocation not supported');
         }
     });
 });
 
-function success(position) {
+function geo_success(position, callback) {
   //alert (google);
   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   geocoder = new google.maps.Geocoder();
@@ -39,9 +39,17 @@ function success(position) {
 				}
 			}
 			$('#zip_search').val(zip);
+			window.zip_search = zip;
 			$('#lat_search').val(position.coords.latitude);
+			window.lat_search = position.coords.latitude;
 			$('#lng_search').val(position.coords.longitude);
+			window.lat_search = position.coords.longitude;
 			$('#addr_search').val(zip + " - " + city);
+			console.log ("setting addr_Search to " + zip + " - " + city );
+			window.addr_search = zip + " - " + city;
+			console.log("addr_search is now " + window.addr_search);
+			console.log("calling submit");
+		  	callback();
 		}
     }
   );
