@@ -13,13 +13,16 @@ $(function() {
 });
 	
 var Story = {};
+
+var expanded;
 	
 var initialize_story;
 
 Story.chapter_ids = ["chapter_1","chapter_2","chapter_3"];
-Story.map_loaded = [0,0,0];
 
 initialize_story = function(options) {
+	Story.map_loaded = [0,0,0];
+	expanded = 0;
 	
 	Story.current_story = options;
 	console.log ("Testing Story Manager");
@@ -115,27 +118,74 @@ initialize_story = function(options) {
 	}
 	
 	$('#chapter_1').click (function() {
-		$('#chapter_1_details').slideToggle('slow', function() {
-		});
-		getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 1);
-		collapse_all_but(1);
+		if (expanded != 1) {
+			expanded = 1;
+			hide_then_expand(1, function() { $('#chapter_1_details').slideToggle(400); } );
+			getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 1);
+		}
+		else {
+			expanded = 0;
+			$('#chapter_1_arrow').attr('src',"images/right-arrow.png");
+			$('#chapter_1_details').slideToggle(400, function() {
+				$('#chapter_2').toggle(400); //toggle('fast');
+				$('#chapter_3').toggle(400); //toggle('fast');
+			} );
+		}
 	});
 
 	$('#chapter_2').click (function() {
-		$('#chapter_2_details').slideToggle('slow', function() {
-		});
-		getMapOnce(Story.current_story.activities[1].latitude,Story.current_story.activities[1].longitude, 2);
-		collapse_all_but(2);
+		if (expanded != 2) {
+			expanded = 2;
+			hide_then_expand(2, function() { $('#chapter_2_details').slideToggle(400); } );
+			getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 2);
+		}
+		else {
+			expanded = 0;
+			$('#chapter_2_arrow').attr('src',"images/right-arrow.png");
+			$('#chapter_2_details').slideToggle(400, function() {
+				$('#chapter_1').toggle(400); //toggle('fast');
+				$('#chapter_3').toggle(400); //toggle('fast');
+			} );
+		}
 	});
 
-	$('#chapter_3').click (function() {	
-		$('#chapter_3_details').slideToggle('slow', function() {
-		});
-		getMapOnce(Story.current_story.activities[2].latitude,Story.current_story.activities[2].longitude, 3);
-		collapse_all_but(3);
+	$('#chapter_3').click (function() {
+		if (expanded != 3) {
+			expanded = 3;
+			hide_then_expand(3, function() { $('#chapter_3_details').slideToggle(400); } );
+			getMapOnce(Story.current_story.activities[0].latitude,Story.current_story.activities[0].longitude, 3);
+		}
+		else {
+			expanded = 0;
+			$('#chapter_3_arrow').attr('src',"images/right-arrow.png");
+			$('#chapter_3_details').slideToggle(400, function() {
+				$('#chapter_1').toggle(400); //toggle('fast');
+				$('#chapter_2').toggle(400); //toggle('fast');
+			} );
+		}
 	});
 
 }
+
+
+function hide_then_expand(chapter_elem, details_slide)
+{
+	$('#chapter_'+(chapter_elem)+'_arrow').attr('src',"images/down-arrow.png");
+
+	count = 0;
+	for(chap = 0; chap < Story.chapter_ids.length; chap++) {
+		if (chap+1 != chapter_elem) {
+			count++;
+			//$('#' + Story.chapter_ids[chap]).slideToggle('slow');
+			if (count == 1)
+				$('#' + Story.chapter_ids[chap]).toggle(400) //toggle('fast');
+			else
+				$('#' + Story.chapter_ids[chap]).toggle(400,details_slide); //.toggle('fast', details_slide);
+			$('#chapter_'+(chap+1)+'_arrow').attr('src',"images/right-arrow.png");
+		}
+	}
+}
+
 
 function getMapOnce(lat,lng,elem)
 {
@@ -160,20 +210,6 @@ function getMap(lat,lng, elementid)
 	return ("http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=17&markers=color:blue%7Clabel:S%7C" + lat + "," + lng + "&size=576x174&sensor=false");
 }
 
-function collapse_all_but(chapter_elem)
-{
-	if ( $('#chapter_'+(chapter_elem)+'_arrow').attr('src').indexOf("down") > 0)
-		$('#chapter_'+(chapter_elem)+'_arrow').attr('src',"images/right-arrow.png");
-	else
-		$('#chapter_'+(chapter_elem)+'_arrow').attr('src',"images/down-arrow.png");
-
-	for(chap = 0; chap < Story.chapter_ids.length; chap++) {
-		if (chap+1 != chapter_elem) {
-			$('#' + Story.chapter_ids[chap]).slideToggle('slow');
-			$('#chapter_'+(chap+1)+'_arrow').attr('src',"images/right-arrow.png");
-		}
-	}
-}
 $(function() {
 	$('#story').live('pageshow',function(event, ui){
 		console.log( "Loading Story List");
