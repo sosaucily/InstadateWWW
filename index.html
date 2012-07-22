@@ -89,6 +89,7 @@
 		}
 		console.log("calling geo");
 		$.mobile.showPageLoadingMsg();
+		custom_update_loading_image();
 		navigator.geolocation.getCurrentPosition(afterGeoSuccess, error);
 	}
 	

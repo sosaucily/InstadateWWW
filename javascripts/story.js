@@ -1,10 +1,3 @@
-$( document ).bind( 'mobileinit', function(){
-  $.mobile.loader.prototype.options.text = "Loading your Oyster!";
-  $.mobile.loader.prototype.options.textVisible = true;
-  $.mobile.loader.prototype.options.theme = "b";
-  $.mobile.loader.prototype.options.html = "";
-});
-
 $(function() {
 	$('#refreshButton').click(function() {
 		console.log("Refresh!");
@@ -175,11 +168,8 @@ function fadeOutForRefresh() {
 	for(chap = 0; chap < Story.chapter_ids.length; chap++) {
 		if(chap == 2) {
 			$('#' + Story.chapter_ids[chap]).toggle(600, function() {
-				var $this = $( this ),
-					theme = $this.jqmData("theme") || $.mobile.loadingMessageTheme,
-					msgText = $this.jqmData("msgtext") || $.mobile.loadingMessage,
-					textonly = !!$this.jqmData("textonly");
-				$.mobile.showPageLoadingMsg(theme, msgText, textonly);
+				$.mobile.showPageLoadingMsg();
+				custom_update_loading_image();
 			});
 		}
 		else {
@@ -246,19 +236,11 @@ function getMap(lat,lng, elementid)
 	return ("http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=17&markers=color:blue%7Clabel:S%7C" + lat + "," + lng + "&size=576x174&sensor=false");
 }
 
-$(function() {
-	$('#story').live('pageshow',function(event, ui){
-		console.log( "Loading Story List");
-		$.mobile.showPageLoadingMsg();
-		//With JqM 1.2 will have a better loading system...
-		//$.mobile.loading(HTML=...);
-	});
-	/*$('#story').live('page',function(event, ui){
-		console.log( "Finished Loading Story list");
-		$.mobile.hidePageLoadingMsg();
-	});*/
-});
-
+function custom_update_loading_image() {
+	$('.ui-loader').removeClass('ui-loader-default');
+	$('.ui-loader').addClass('ui-loader-verbose');
+	$('.ui-loader h1').html("Finding your Oyster...");
+}
 
 function submit_story() {
 	var user_location = window.addr_search;
