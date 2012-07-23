@@ -169,7 +169,7 @@ function fadeOutForRefresh() {
 		if(chap == 2) {
 			$('#' + Story.chapter_ids[chap]).toggle(600, function() {
 				$.mobile.showPageLoadingMsg();
-				custom_update_loading_image();
+				custom_update_loading_image(window.city);
 			});
 		}
 		else {
@@ -236,10 +236,13 @@ function getMap(lat,lng, elementid)
 	return ("http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=17&markers=color:blue%7Clabel:S%7C" + lat + "," + lng + "&size=576x174&sensor=false");
 }
 
-function custom_update_loading_image() {
+function custom_update_loading_image(city) {
 	$('.ui-loader').removeClass('ui-loader-default');
 	$('.ui-loader').addClass('ui-loader-verbose');
-	$('.ui-loader h1').html("Finding your Oyster...");
+	if (city != null && city != "")
+		$('.ui-loader h1').html("Finding your Oyster in<br /><div id=\"loading_city\">" + city + "</div>");
+	else
+		$('.ui-loader h1').html("Finding your Oyster in<br /><div id=\"loading_city\">...</div>");
 }
 
 function submit_story() {

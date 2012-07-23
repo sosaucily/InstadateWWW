@@ -49,6 +49,8 @@ function geo_success(position, callback) {
 			window.addr_search = zip + " - " + city;
 			console.log("addr_search is now " + window.addr_search);
 			console.log("calling submit");
+			$('#loading_city').html(window.city);
+			$('#loading_city').hide().html(window.city).fadeIn(600);
 		  	callback();
 		}
     }

@@ -16,7 +16,8 @@
 	  <link href="stylesheets/application.css" media="all" rel="stylesheet" type="text/css" />
 	<link href="stylesheets/activities.css" media="all" rel="stylesheet" type="text/css" />
 	<link href="stylesheets/jquery.mobile-1.1.1.min.css" media="all" rel="stylesheet" type="text/css" />
-	<link href="stylesheets/jquery.mobile.datebox.min.css" media="all" rel="stylesheet" type="text/css" />
+<!--	<link href="stylesheets/jquery.mobile.datebox.min.css" media="all" rel="stylesheet" type="text/css" /> -->
+	<link href="stylesheets/jqm-datebox.min.css" media="all" rel="stylesheet" type="text/css" />
 	<link href="stylesheets/jquery.mobile.actionsheet.css" media="all" rel="stylesheet" type="text/css" />
 	<link href="stylesheets/main.css" media="all" rel="stylesheet" type="text/css" />
 	<link href="stylesheets/woody.css" media="all" rel="stylesheet" type="text/css" />
@@ -34,7 +35,9 @@
 	<script src="javascripts/klass.min.js" type="text/javascript"></script>
 	<script src="javascripts/jquery.mobile-1.1.1.min.js" type="text/javascript"></script>
 	<script src="javascripts/jquery.cycle.all.js" type="text/javascript"></script>
-	<script src="javascripts/jquery.mobile.datebox.min.js" type="text/javascript"></script>
+<!--	<script src="javascripts/jquery.mobile.datebox.min.js" type="text/javascript"></script> -->
+	<script src="javascripts/jqm-datebox.core.min.js" type="text/javascript"></script>
+	<script src="javascripts/jqm-datebox.mode.datebox.min.js" type="text/javascript"></script>
 	<script src="javascripts/jquery.mobile.actionsheet.js" type="text/javascript"></script>
 	<script src="javascripts/NativeControls.js" type="text/javascript"></script>
 	<script src="javascripts/story.js" type="text/javascript"></script>
@@ -135,7 +138,7 @@
 	    <!-- Header -->
 	    <div data-role="header" class="header story-header">
 	       <a href="#customize" id="customizeButton" data-icon="gear" data-transition="flip"></a> 
-	       <h4>Your Oyster</h4>
+	       <h4>Oyster</h4>
 		   <a href="#" id="refreshButton" data-icon="refresh"></a>
 	    </div><!-- END OF: Header -->
 
@@ -190,8 +193,8 @@
 		        	<br />
 			        <label for="story_date">When is your date?</label>
 					<div>
-						<input name="story_date" id="story_date" type="date" data-role="datebox" placeholder="Select date (blank for today)" 
-					   		data-options='{"mode": "datebox","afterToday":true,"calTodayButton":true, "defaultDate":"2013-01-01"}' />
+						<input name="story_date" id="story_date" type="date" data-role="datebox"  placeholder="Select date (blank for today)" 
+					   		data-options='{"mode": "datebox","afterToday":true,"useTodayButton":true, "usePlaceholder":true, "defaultValue":"2001-01-01"}' />
 					</div>
 					<!--Change mode:datebox to mode:calbox for full cal view-->
 		<!--	        <div data-role="fieldcontain" class="filter daypart"> -->
