@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------------*/
-/*	Start Global CSS
+/*	Permalink CSS
 /*-----------------------------------------------------------------------------------*/
 
 body{
@@ -26,7 +26,7 @@ a:hover{
 }
 
 .wrapper{
-	width: 870px;
+	width: 960px;
 	margin: 0 auto;
 	position: relative;
 }
@@ -63,21 +63,22 @@ a:hover{
 
 h1.logo{
 	position: absolute;
-	top: 60px;
-	left: 0;
+	top: 40px;
+	left: 565px;
 	width: 470px;
-	height: 88px;
-	background: url("../../images/desktop/oyster-logo.png") no-repeat;
+	height: 42px;
+	background: url("../../images/desktop/oyster-logo-small.png") no-repeat;
 	text-indent:-9999px;
 }
 
 .intro{
-	padding-top: 180px;
+	padding-top: 100px;
 	width: 470px;
-	margin-left: 20px;
+	margin-left: 440px;
 	color: #A0B2B3;
 	font-size:30px;
 	line-height:40px;
+	text-align: center;
 }
 
 .intro p{
@@ -86,8 +87,9 @@ h1.logo{
 }
 
 .app-store, .app-store a{
-	padding-top: 20px;
-	width: 220px;
+	padding-top: 0px;
+	padding-left: 120px;
+	width: 100px;
 	height: 72px;
 }
 
@@ -106,39 +108,14 @@ h1.logo{
 
 #iphone{
 	position: absolute;
-	top: -320px;
-	right: 23px;
-	width: 266px;
-	height: 538px;
-	background: url(../../images/desktop/iphone.png) no-repeat;
+	top: -340px;
+	left: 30px;
+	width: 380px;
+	height: 432px;
+	background: url(../../images/desktop/fake-iphone.png) no-repeat;
 }
 
-#slides, #slides li{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
 
-#slides{
-	position: absolute;
-	top: 83px;
-	left: 22px;
-}
-
-#slides li{
-	display: none;
-}
-
-#homebutton{
-    display: block;
-    height: 50px;
-    left: 110px;
-    position: absolute;
-    text-decoration: none;
-    text-indent: -9999px;
-    top: 447px;
-    width: 50px;
-}
 
 /*-----------------------------------------------------------------------------------*/
 /*	Tabs + Tab Content
@@ -155,7 +132,7 @@ h1.logo{
 
 #content{
 	padding-top: 10px;
-	margin-left: 25px;
+	margin-left: 450px;
 }
 
 #tabs{
@@ -197,7 +174,7 @@ h1.logo{
 
 .features li{
 	font-size: 13px;
-	width: 220px;
+	width: 210px;
 	float: left;
 	margin-right: 40px;
 	padding-bottom: 40px;
@@ -227,7 +204,7 @@ h1.logo{
 
 .about li{
 	font-size: 13px;
-	width: 520px;
+	width: 480px;
 	float: left;
 	margin-right: 40px;
 	padding-bottom: 40px;
@@ -292,6 +269,7 @@ h1.logo{
 #footer{
 	background: url("../../images/desktop/divider.png") top center no-repeat;
 	overflow: hidden;
+	margin-left: -420px;
 	padding: 20px 0 0 0;
 	font-size:11px;
 	margin-top: 10px;
@@ -304,6 +282,7 @@ h1.logo{
 
 #footer .footer-left{
 	line-height:20px;
+	margin-left: 50px;
 }
 
 #footer-subscribe{
@@ -348,7 +327,7 @@ h1.logo{
 }
 
 #social-icons{
-	margin:10px 0 0 0;
+	margin:10px 45px 0 0;
 	text-align:right;
 	padding:0 3px 0 0;
 }
