@@ -11,6 +11,14 @@ $(document).ready(function() {
     });
 });
 
+function auto_geo() {
+	navigator.geolocation.getCurrentPosition(afterGeoSuccess, error);
+}
+	
+function afterGeoSuccess(position) {
+	geo_success(position, submit_story);
+}
+
 function geo_success(position, callback) {
   //alert (google);
   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -62,4 +70,27 @@ function error(msg) {
       var errMsg = typeof msg == 'string' ? msg : "Geolocation failed - Make sure you have your web browser enabled under Settings - Location Services";
       alert (errMsg);
 	  //$('#msg').html(errMsg);
+}
+
+function onBodyLoad()
+{		
+	document.addEventListener('deviceready', function() {
+		try {
+			//Do something.. if you dare.
+			console.log("checking geo from deviceREady");
+			// if (!navigator.geolocation) {
+			// 	console.log("no geo, redirecting to customize page");
+			// 	window.location.replace("#customize");
+			// }
+			console.log("calling geo");
+			$.mobile.showPageLoadingMsg();
+			custom_update_loading_image();
+			// navigator.geolocation.getCurrentPosition(afterGeoSuccess, error);
+			auto_geo();
+		} catch (e) {
+			alert(e);
+		}
+		}, false);
+	document.addEventListener("deviceready", onDeviceReady, false);
+
 }
