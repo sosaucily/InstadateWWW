@@ -78,19 +78,23 @@ function onBodyLoad()
 		try {
 			//Do something.. if you dare.
 			console.log("checking geo from deviceREady");
-			// if (!navigator.geolocation) {
-			// 	console.log("no geo, redirecting to customize page");
-			// 	window.location.replace("#customize");
-			// }
+			if (!navigator.geolocation) {
+				console.log("no geo, redirecting to customize page");
+				window.location.replace("#customize");
+			}
 			console.log("calling geo");
 			$.mobile.showPageLoadingMsg();
 			custom_update_loading_image();
-			// navigator.geolocation.getCurrentPosition(afterGeoSuccess, error);
 			auto_geo();
 		} catch (e) {
 			alert(e);
 		}
 		}, false);
 	document.addEventListener("deviceready", onDeviceReady, false);
-
+	
+	//comment these 3 out for mobile, uncomment for desktop browser testing
+	// $.mobile.showPageLoadingMsg();
+	// custom_update_loading_image();
+	// auto_geo();
+	
 }
