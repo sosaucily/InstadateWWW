@@ -30,8 +30,13 @@ initialize_story = function(options) {
 		curr_id = Story.chapter_ids[chap];
 		try {
 			if (curr_chap_data.image_url == null || curr_chap_data.image_url == "") {
-				curr_chap_data.image_url = "http://theoyster.me/images/default-activity-icon.png";
-				//BUG - Why pull this off the web instead of using local??
+				if (curr_chap_data.category_image_name != null) {
+					curr_chap_data.image_url = "images/story_pics/" + curr_chap_data.category_image_name;
+				}
+				else{
+					curr_chap_data.image_url = "http://theoyster.me/images/default-activity-icon.png";
+					//BUG: Why pull this off the web instead of using local??	
+				}
 			}
 		} catch (e)
 		{
