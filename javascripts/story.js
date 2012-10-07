@@ -2,7 +2,14 @@ $(function() {
 	$('#refreshButton').click(function() {
 		console.log("Refresh!");
 		fadeOutForRefresh();
-	})
+	});
+	$('#addr_search').keyup(function() { 
+		window.addr_search = $('#addr_search').val();
+		console.log("updated addr to " + window.addr_search);
+		$('#lat_search').val("");
+		$('#lng_search').val("");
+		$('#zip_search').val(window.addr_search);
+	});
 });
 	
 var Story = {};
@@ -10,6 +17,12 @@ var Story = {};
 var expanded;
 	
 var initialize_story;
+
+var show_error;
+
+show_error = function(error_message) {
+	alert (jQuery.parseJSON(error_message)["error"]["message"]);
+}
 
 initialize_story = function(options) {
 	Story.chapter_ids = ["chapter_1","chapter_2","chapter_3"];
@@ -164,23 +177,26 @@ initialize_story = function(options) {
 			} );
 		}
 	});
-	
-	
-
 }
 
 function fadeOutForRefresh() {
-	for(chap = 0; chap < Story.chapter_ids.length; chap++) {
-		if(chap == 2) {
-			$('#' + Story.chapter_ids[chap]).toggle(600, function() {
-				$.mobile.showPageLoadingMsg();
-				custom_update_loading_image(window.city);
-			});
-		}
-		else {
-			$('#' + Story.chapter_ids[chap]).toggle(400, function() {
-			});
-		}
+	if (!last_submit_failed){
+		for(chap = 0; chap < Story.chapter_ids.length; chap++) {
+			if(chap == 2) {
+				$('#' + Story.chapter_ids[chap]).toggle(600, function() {
+					$.mobile.showPageLoadingMsg();
+					custom_update_loading_image(window.city);
+				});
+			}
+			else {
+				$('#' + Story.chapter_ids[chap]).toggle(400, function() {
+				});
+			}
+		}		
+	}
+	else{
+		$.mobile.showPageLoadingMsg();
+		custom_update_loading_image(window.city);
 	}
 	submit_story();
 }
@@ -252,7 +268,7 @@ function custom_update_loading_image(city) {
 
 function submit_story() {
 	var user_location = window.addr_search;
-	
+	window.zip_search = user_location;
 	var zip = window.zip_search;
 
 	var valid_zip = /^\d{5}(-\d{4})?(?!-)$/
@@ -287,9 +303,22 @@ function submit_story() {
 	$.ajax({
 	  type: 'post',
 	  data: $("#story_form").serialize(),
+	  error: function(data) {
+		last_submit_failed = true;
+		$.mobile.hidePageLoadingMsg();
+		if (data.responseText.length > 0) {
+			show_error(data.responseText);
+		}
+		else {
+			show_error("Error building your story.  Please try again.");
+		}
+	  },
 	  success: function(data) {
+		last_submit_failed = false;
 		$('#story_list').html('');
 		Story = {};
+		json_data = jQuery.parseJSON(data);
+		console.log("initializing story");
 		initialize_story(jQuery.parseJSON(data));
 		$.mobile.hidePageLoadingMsg();
 	  },

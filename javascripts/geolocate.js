@@ -52,9 +52,11 @@ function geo_success(position, callback) {
 			window.lat_search = position.coords.latitude;
 			$('#lng_search').val(position.coords.longitude);
 			window.lat_search = position.coords.longitude;
-			$('#addr_search').val(zip + " - " + city);
+			$('#addr_search').val(zip);
+			// + " - " + city);
 			console.log ("setting addr_Search to " + zip + " - " + city );
-			window.addr_search = zip + " - " + city;
+			window.addr_search = zip;
+			// + " - " + city;
 			console.log("addr_search is now " + window.addr_search);
 			console.log("calling submit");
 			$('#loading_city').html(window.city);

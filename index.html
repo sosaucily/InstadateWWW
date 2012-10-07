@@ -154,7 +154,7 @@
 		    </div><!--END OF: Logo -->
 		    <div data-role="content" class="content" data-theme="a" style="margin-top:0px">
 			    <form id="story_form" onsubmit="return validate_location_input()">
-			        <label for="zip_search" style="margin-bottom:-3px;">Where is your date?</label>
+			        <div style="display:inline-block"><label for="zip_search" style="margin-bottom:-3px;">Where?</label></div>
 
 					<div class="insta-zip-col1"><input placeholder="Zipcode" type="text" name="addr_search" id="addr_search" value="" data-mini="true"/></div>
 					<div class="insta-zip-col2"><a id="findme" href="#" data-role="button" data-icon="gps" data-mini="true" data-theme="a">Near me</a></div>
@@ -172,20 +172,39 @@
 			        </fieldset>
 
 		        	<br />
-			        <label for="story_date">When is your date?</label>
-					<div>
+			        <div class="story_date_when"><label for="story_date">When?</label></div>
+					<div class="story_date_datebox">
 						<input name="story_date" id="story_date" type="date" data-role="datebox"  placeholder="Select date (blank for today)" 
 					   		data-options='{"mode": "datebox","afterToday":true,"useTodayButton":true, "usePlaceholder":true, "defaultValue":"2001-01-01"}' />
 					</div>
+					
+					<div class="story_distance_label"><label for="story_distance">Distance (miles)?</label></div>
+					<div style="display:inline-block; margin-top:10px">
+						<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:25px; margin-top:2px; display:inline-block;">
+				            <input type="radio" name="story_distance" id="radiobtn-1" value="1" />
+				            <label for="radiobtn-1">1</label>
+				            <input type="radio" name="story_distance" id="radiobtn-2" value="2" />
+				            <label for="radiobtn-2">2</label>
+				            <input type="radio" name="story_distance" id="radiobtn-3" value="5" />
+				            <label for="radiobtn-3">5</label>
+				            <input type="radio" name="story_distance" id="radiobtn-4" value="10" />
+				            <label for="radiobtn-4">10</label>
+				            <input type="radio" name="story_distance" id="radiobtn-5" value="20" />
+				            <label for="radiobtn-5">20</label>
+				            <input type="radio" name="story_distance" id="radiobtn-6" checked="checked" value="50" />
+				            <label for="radiobtn-6">50</label>
+				        </fieldset>
+					</div>
+					
 					<!--Change mode:datebox to mode:calbox for full cal view-->
-		<!--	        <div data-role="fieldcontain" class="filter daypart"> -->
-			          <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:60px; margin-top:5px;">
+			        <div data-role="fieldcontain" class="filter daypart" style="display:inline-block;">
+			          <fieldset data-role="controlgroup" class="day_part_controls" data-type="horizontal" data-mini="true" style="margin-left:60px; margin-top:5px;">
 			            <input type="radio" name="daypart" id="radiobtn-4" value="day" />
 			            <label for="radiobtn-4">Daytime</label>
 			            <input type="radio" name="daypart" id="radiobtn-5" checked="checked" class="ui-btn-active" class="" value="evening" />
 			            <label for="radiobtn-5">Evening</label>
 			          </fieldset>
-		<!--	        </div> -->
+			        </div>
 					<br />
 					<a href="#story" data-transition="flip" id="story_submit" data-role="button" data-theme="b">Oyster me!</a>
 				</form>
