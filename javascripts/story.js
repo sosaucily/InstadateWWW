@@ -180,7 +180,7 @@ initialize_story = function(options) {
 }
 
 function fadeOutForRefresh() {
-	if (!last_submit_failed){
+	if (!window.last_submit_failed){
 		for(chap = 0; chap < Story.chapter_ids.length; chap++) {
 			if(chap == 2) {
 				$('#' + Story.chapter_ids[chap]).toggle(600, function() {
@@ -304,7 +304,7 @@ function submit_story() {
 	  type: 'post',
 	  data: $("#story_form").serialize(),
 	  error: function(data) {
-		last_submit_failed = true;
+		window.last_submit_failed = true;
 		$.mobile.hidePageLoadingMsg();
 		if (data.responseText.length > 0) {
 			show_error(data.responseText);
@@ -314,7 +314,7 @@ function submit_story() {
 		}
 	  },
 	  success: function(data) {
-		last_submit_failed = false;
+		window.last_submit_failed = false;
 		$('#story_list').html('');
 		Story = {};
 		json_data = jQuery.parseJSON(data);

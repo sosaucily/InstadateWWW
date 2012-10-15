@@ -162,6 +162,23 @@
 					<input type="text" name="zip_search" id="zip_search" value="" style="display:none;" />
 					<input type="text" name="lat_search" id="lat_search" value="" style="display:none;" />
 					<input type="text" name="lng_search" id="lng_search" value="" style="display:none;" />
+					<br />
+					<div class="story_distance_label"><label for="story_distance">Within (miles)?</label></div>
+					
+					<div style="display:inline-block; margin-top:10px">
+						<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:25px; margin-top:2px; display:inline-block;">
+				            <input type="radio" name="story_distance" id="radiobtn-1" value="1" />
+				            <label for="radiobtn-1">1</label>
+				            <input type="radio" name="story_distance" id="radiobtn-2" value="2" />
+				            <label for="radiobtn-2">2</label>
+				            <input type="radio" name="story_distance" id="radiobtn-3" value="5" />
+				            <label for="radiobtn-3">5</label>
+				            <input type="radio" name="story_distance" id="radiobtn-4" value="10" />
+				            <label for="radiobtn-4">10</label>
+				        </fieldset>
+					</div>
+					
+					
 		            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:25px; margin-top:2px;">
 			            <input type="radio" name="activity" id="radiobtn-1" checked="checked" value="anything" />
 			            <label for="radiobtn-1">Anything</label>
@@ -176,24 +193,6 @@
 					<div class="story_date_datebox">
 						<input name="story_date" id="story_date" type="date" data-role="datebox"  placeholder="Select date (blank for today)" 
 					   		data-options='{"mode": "datebox","afterToday":true,"useTodayButton":true, "usePlaceholder":true, "defaultValue":"2001-01-01"}' />
-					</div>
-					
-					<div class="story_distance_label"><label for="story_distance">Distance (miles)?</label></div>
-					<div style="display:inline-block; margin-top:10px">
-						<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:25px; margin-top:2px; display:inline-block;">
-				            <input type="radio" name="story_distance" id="radiobtn-1" value="1" />
-				            <label for="radiobtn-1">1</label>
-				            <input type="radio" name="story_distance" id="radiobtn-2" value="2" />
-				            <label for="radiobtn-2">2</label>
-				            <input type="radio" name="story_distance" id="radiobtn-3" value="5" />
-				            <label for="radiobtn-3">5</label>
-				            <input type="radio" name="story_distance" id="radiobtn-4" value="10" />
-				            <label for="radiobtn-4">10</label>
-				            <input type="radio" name="story_distance" id="radiobtn-5" value="20" />
-				            <label for="radiobtn-5">20</label>
-				            <input type="radio" name="story_distance" id="radiobtn-6" checked="checked" value="50" />
-				            <label for="radiobtn-6">50</label>
-				        </fieldset>
 					</div>
 					
 					<!--Change mode:datebox to mode:calbox for full cal view-->
