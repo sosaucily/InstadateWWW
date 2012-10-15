@@ -10,6 +10,9 @@ $(function() {
 		$('#lng_search').val("");
 		$('#zip_search').val(window.addr_search);
 	});
+	$( '#story' ).live( 'pageshow',function(event, ui){
+		$('#refreshButton').click();
+	});
 });
 	
 var Story = {};
@@ -180,19 +183,30 @@ initialize_story = function(options) {
 }
 
 function fadeOutForRefresh() {
-	if (!window.last_submit_failed){
-		for(chap = 0; chap < Story.chapter_ids.length; chap++) {
-			if(chap == 2) {
-				$('#' + Story.chapter_ids[chap]).toggle(600, function() {
-					$.mobile.showPageLoadingMsg();
-					custom_update_loading_image(window.city);
-				});
-			}
-			else {
-				$('#' + Story.chapter_ids[chap]).toggle(400, function() {
-				});
-			}
-		}		
+	if (!window.last_submit_failed) {
+		console.log("expanded is " + expanded);
+		if (expanded != 0) { //One of the chapters is already expanded..  
+			console.log("fixing chapter " + expanded-1  + " with name " + '#' + Story.chapter_ids[expanded-1]);
+			$('#chapter_'+expanded+'_details').slideToggle(0);
+			$('#' + Story.chapter_ids[expanded-1]).toggle(600, function() {
+				$.mobile.showPageLoadingMsg();
+				custom_update_loading_image(window.city);
+			});
+		}
+		else {
+			for(chap = 0; chap < Story.chapter_ids.length; chap++) {
+				if(chap == 2) {
+					$('#' + Story.chapter_ids[chap]).toggle(600, function() {
+						$.mobile.showPageLoadingMsg();
+						custom_update_loading_image(window.city);
+					});
+				}
+				else {
+					$('#' + Story.chapter_ids[chap]).toggle(400, function() {
+					});
+				}
+			}		
+		}
 	}
 	else{
 		$.mobile.showPageLoadingMsg();

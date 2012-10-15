@@ -1,20 +1,26 @@
 
 .insta-zip-col1 {
   display: inline-block;
-  width: 24%;
+  width: 26%;
   margin-right:0px;
   margin-left:10px;
 }
 
 .insta-zip-col2 {
   display: inline-block;
-  width: 24%;
+  width: 50%;
   margin-left:3px;
   margin-right:-15px;
 }
 
 .story_date_when {
 	display: inline-block;
+	font-size: 16px;
+	line-height: 1.4;
+	font-weight: normal;
+	float: left;
+	margin-top: 24px;
+	padding-bottom: 20px;
 }
 
 .day_part_controls .ui-controlgroup-controls {
@@ -26,12 +32,14 @@
 	font-size: 16px;
 	line-height: 1.4;
 	font-weight: normal;
-	margin: 0 0 .3em;
+	float: left;
+	margin-top: 18px;
+	padding-bottom: 20px;
 }
 
 .story_date_datebox {
 	display:inline-block;
-	width:45%;
+	width:65%;
     margin-left:10px;
 }
 

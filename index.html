@@ -114,8 +114,7 @@
 	<!-- STORY -->
 	<div data-role="page" id="story" data-title="Story">
 	<!--	<div id="story-page" data-role="page" class="page"> -->
-
-
+		
 	    <!-- Header -->
 	    <div data-role="header" class="header story-header">
 	       <a href="#customize" id="customizeButton" data-icon="gear" data-transition="flip"></a> 
@@ -166,8 +165,8 @@
 					<div class="story_distance_label"><label for="story_distance">Within (miles)?</label></div>
 					
 					<div style="display:inline-block; margin-top:10px">
-						<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:25px; margin-top:2px; display:inline-block;">
-				            <input type="radio" name="story_distance" id="radiobtn-1" value="1" />
+						<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" style="width: 100%; margin-left:10px; margin-top:2px; display:inline-block;">
+				            <input type="radio" name="story_distance" id="radiobtn-1" checked="checked" value="1" />
 				            <label for="radiobtn-1">1</label>
 				            <input type="radio" name="story_distance" id="radiobtn-2" value="2" />
 				            <label for="radiobtn-2">2</label>
@@ -188,16 +187,15 @@
 			            <label for="radiobtn-3">Indoor</label>
 			        </fieldset>
 
-		        	<br />
 			        <div class="story_date_when"><label for="story_date">When?</label></div>
-					<div class="story_date_datebox">
+					<!-- <div class="story_date_datebox">
 						<input name="story_date" id="story_date" type="date" data-role="datebox"  placeholder="Select date (blank for today)" 
 					   		data-options='{"mode": "datebox","afterToday":true,"useTodayButton":true, "usePlaceholder":true, "defaultValue":"2001-01-01"}' />
-					</div>
+					</div> -->
 					
 					<!--Change mode:datebox to mode:calbox for full cal view-->
 			        <div data-role="fieldcontain" class="filter daypart" style="display:inline-block;">
-			          <fieldset data-role="controlgroup" class="day_part_controls" data-type="horizontal" data-mini="true" style="margin-left:60px; margin-top:5px;">
+			          <fieldset data-role="controlgroup" class="day_part_controls" data-type="horizontal" data-mini="true" style="margin: 5px 0 0 8px;">
 			            <input type="radio" name="daypart" id="radiobtn-4" value="day" />
 			            <label for="radiobtn-4">Daytime</label>
 			            <input type="radio" name="daypart" id="radiobtn-5" checked="checked" class="ui-btn-active" class="" value="evening" />
