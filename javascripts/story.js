@@ -13,6 +13,7 @@ $(function() {
 	$( '#story' ).live( 'pageshow',function(event, ui){
 		$('#refreshButton').click();
 	});
+		
 });
 	
 var Story = {};
@@ -196,12 +197,14 @@ function fadeOutForRefresh() {
 		else {
 			for(chap = 0; chap < Story.chapter_ids.length; chap++) {
 				if(chap == 2) {
+					console.log("toggling chapter " + chap + " and reloading");
 					$('#' + Story.chapter_ids[chap]).toggle(600, function() {
 						$.mobile.showPageLoadingMsg();
 						custom_update_loading_image(window.city);
 					});
 				}
 				else {
+					console.log("toggling chapter " + chap);
 					$('#' + Story.chapter_ids[chap]).toggle(400, function() {
 					});
 				}
@@ -316,6 +319,7 @@ function submit_story() {
 
 	$.ajax({
 	  type: 'post',
+	  headers: { "cache-control": "no-cache" },
 	  data: $("#story_form").serialize(),
 	  error: function(data) {
 		window.last_submit_failed = true;
