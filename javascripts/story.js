@@ -308,14 +308,14 @@ function submit_story() {
 		window.zip_search = user_location;
 	}
 
-
 	if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-		if (window.instadateConfig["data_server_url"].match(/InstadateIphone/)) {
+
+		if (window.oysterConfig["data_server_url"].match(/oyster\.app/)) {
 			//Changing the backend URL because we're on an iphone or iphone simulator
-			window.instadateConfig["data_server_url"] = "http://theoyster.me/";
+			window.oysterConfig["data_server_url"] = "http://theoyster.me/";
 		}
 	}
-	console.log ("Getting data from backend url: " + window.instadateConfig["data_server_url"] + "story/create" );
+	console.log ("Getting data from backend url: " + window.oysterConfig["data_server_url"] + "story/create" );
 
 	$.ajax({
 	  type: 'post',
@@ -340,7 +340,7 @@ function submit_story() {
 		initialize_story(jQuery.parseJSON(data));
 		$.mobile.hidePageLoadingMsg();
 	  },
-	  url: window.instadateConfig["data_server_url"] + "story/create"
+	  url: window.oysterConfig["data_server_url"] + "story/create"
 	});
 	return true;
 }
