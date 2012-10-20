@@ -1,6 +1,6 @@
 //
 //  ShareKitPlugin.js
-//  
+//
 //
 //  Created by Erick Camacho on 28/07/11.
 //  MIT Licensed
@@ -28,21 +28,21 @@ ShareKitPlugin.prototype.isLoggedToFacebook = function( callback )
 {
 	
     cordova.exec(callback, null, "ShareKitPlugin", "isLoggedToFacebook", [] );
-
+    
 };
 
 ShareKitPlugin.prototype.logoutFromTwitter = function()
 {
 	
     cordova.exec(null, null, "ShareKitPlugin", "logoutFromTwitter", [] );
-
+    
 };
 
 ShareKitPlugin.prototype.logoutFromFacebook = function()
 {
 	
     cordova.exec(null, null, "ShareKitPlugin", "logoutFromFacebook", [] );
-
+    
 };
 
 
@@ -81,9 +81,9 @@ ShareKitPlugin.install = function()
 {
     if(!window.plugins)
     {
-        window.plugins = {};	
+        window.plugins = {};
     }
-
+    
     window.plugins.shareKit = new ShareKitPlugin();
     return window.plugins.shareKit;
 };

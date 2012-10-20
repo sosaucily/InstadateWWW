@@ -1,12 +1,12 @@
 // JS ::::::::
- 
+
 /*
  //  This code is adapted from the work of:
  //  Created by Michael Nachbaur on 13/04/09.
  //  Copyright 2009 Decaf Ninja Software. All rights reserved.
  //  MIT licensed
  */
- 
+
 /**
  * This class exposes mobile phone interface controls to JavaScript, such as
  * native tab and tool bars, etc.
@@ -15,21 +15,21 @@
 function NativeControls() {
     this.tabBarTag = 0;
     this.toolBarIndexes = 0;
-   
+    
     this.tabBarCallbacks = {};
     this.toolBarCallbacks = {};
-   
+    
     this.tappedToolBarItem = null;
     this.selectedTabBarItem = null;
 }
- 
+
 /**
  * Create a native tab bar that can have tab buttons added to it which can respond to events.
  */
 NativeControls.prototype.createTabBar = function() {
     cordova.exec("NativeControls.createTabBar");
 };
- 
+
 /**
  * Show a tab bar.  The tab bar has to be created first.
  * @param {Object} [options] Options indicating how the tab bar should be shown:
@@ -40,7 +40,7 @@ NativeControls.prototype.showTabBar = function(options) {
     if (!options) options = {'position' : 'bottom'};
     cordova.exec("NativeControls.showTabBar", options);
 };
- 
+
 /**
  * Hide a tab bar.  The tab bar has to be created first.
  */
@@ -49,7 +49,7 @@ NativeControls.prototype.hideTabBar = function(animate) {
         animate = true;
     cordova.exec("NativeControls.hideTabBar", { animate: animate });
 };
- 
+
 /**
  * Create a new tab bar item for use on a previously created tab bar.  Use ::showTabBarItems to show the new item on the tab bar.
  *
@@ -76,16 +76,16 @@ NativeControls.prototype.hideTabBar = function(animate) {
  *  - \c badge value to display in the optional circular badge on the item; if null or unspecified, the badge will be hidden
  */
 NativeControls.prototype.createTabBarItem = function(name, label, image, options) {
-   
-        var tag = this.tabBarTag++;
+    
+    var tag = this.tabBarTag++;
     if (options && 'onSelect' in options && typeof(options['onSelect']) == 'function') {
         this.tabBarCallbacks[tag] = {'onSelect':options.onSelect,'name':name};
         //delete options.onSelect;
     }
-       
+    
     cordova.exec("NativeControls.createTabBarItem", name, label, image, tag, options);
 };
- 
+
 /**
  * Update an existing tab bar item to change its badge value.
  * @param {String} name internal name used to represent this item when it was created
@@ -96,7 +96,7 @@ NativeControls.prototype.updateTabBarItem = function(name, options) {
     if (!options) options = {};
     cordova.exec("NativeControls.updateTabBarItem", name, options);
 };
- 
+
 /**
  * Show previously created items on the tab bar
  * @param {String} arguments... the item names to be shown
@@ -112,8 +112,8 @@ NativeControls.prototype.showTabBarItems = function() {
     }
     cordova.exec.apply(this, parameters);
 };
- 
- 
+
+
 /**
  * Function to detect currently selected tab bar item
  * @see createTabBarItem
@@ -122,8 +122,8 @@ NativeControls.prototype.showTabBarItems = function() {
 NativeControls.prototype.getSelectedTabBarItem = function() {
     return this.selectedTabBarItem;
 };
- 
- 
+
+
 /**
  * Manually select an individual tab bar item, or nil for deselecting a currently selected tab bar item.
  * @param {String} tabName the name of the tab to select, or null if all tabs should be deselected
@@ -133,21 +133,21 @@ NativeControls.prototype.getSelectedTabBarItem = function() {
 NativeControls.prototype.selectTabBarItem = function(tab) {
     cordova.exec("NativeControls.selectTabBarItem", tab);
 };
- 
+
 /**
  * Function called when a tab bar item has been selected.
  * @param {Number} tag the tag number for the item that has been selected
  */
 NativeControls.prototype.tabBarItemSelected = function(tag)
 {
-        this.selectedTabBarItem = tag;
+    this.selectedTabBarItem = tag;
     if (typeof(this.tabBarCallbacks[tag].onSelect) == 'function')
         this.tabBarCallbacks[tag].onSelect(this.tabBarCallbacks[tag].name);
 };
- 
- 
- 
- 
+
+
+
+
 /**
  * Create a toolbar.
  */
@@ -180,7 +180,7 @@ NativeControls.prototype.resetToolBar = function() {
 NativeControls.prototype.hideToolBar = function() {
     cordova.exec("NativeControls.hideToolBar");
 };
- 
+
 /**
  * Show the tool bar ( re-render elements )
  * @brief Show the tool bar
@@ -189,8 +189,8 @@ NativeControls.prototype.showToolBar = function() {
     cordova.exec("NativeControls.showToolBar");
 };
 
- 
- 
+
+
 /**
  * Create a new tool bar button item for use on a previously created tool bar.  Use ::showToolBar to show the new item on the tool bar.
  *
@@ -226,77 +226,77 @@ NativeControls.prototype.showToolBar = function() {
  * @param {String} [title] title text to show on the button, or null if no text should be shown
  * @param {String} [image] image filename or internal identifier to show, or null if now image should be shown
  * @param {Object} [options] Options for customizing the individual tab item [no option available at this time - this is for future proofing]
- *  
+ *
  */
 NativeControls.prototype.createToolBarItem = function(name , title , image , options) {
-        var toolBarIndex = this.toolBarIndexes++;
-        if (options && 'onTap' in options && typeof(options['onTap']) == 'function') {
+    var toolBarIndex = this.toolBarIndexes++;
+    if (options && 'onTap' in options && typeof(options['onTap']) == 'function') {
         this.toolBarCallbacks[toolBarIndex] = {'onTap':options.onTap,'name':name};
         //delete options.onSelect;
     }
-        //modify the NativeControls.m to change the options quickly
-        // the instance name on the plugin can be passed with option for now it is hardcode in objc // Emile
+    //modify the NativeControls.m to change the options quickly
+    // the instance name on the plugin can be passed with option for now it is hardcode in objc // Emile
     cordova.exec("NativeControls.createToolBarItem" , name , title , image , options );
 };
- 
+
 /**
  * Function called when a tool bar item has been tapped.
  * @param {Number} tag the tag number for the item that has been selected
  */
 NativeControls.prototype.toolBarButtonTapped = function(tag)
 {
-        this.tappedToolBarItem = tag;
+    this.tappedToolBarItem = tag;
     if (typeof(this.toolBarCallbacks[tag].onTap) == 'function')
         this.toolBarCallbacks[tag].onTap(this.toolBarCallbacks[tag].name);
 };
- 
- 
- 
- 
- 
+
+
+
+
+
 NativeControls.prototype.createActionSheet = function(buttonTitles,actionSheetTitle,cancelButtonIndex,destructiveButtonIndex)
 {
-        var options = {};
-       
-        if(actionSheetTitle != null)
-        {
-                options.title = actionSheetTitle;
-        }
-        if(cancelButtonIndex != null)
-        {
-                options.cancelButtonIndex = cancelButtonIndex;
-        }
-        if(destructiveButtonIndex != null)
-        {
-                options.destructiveButtonIndex = destructiveButtonIndex;
-        }
-   
-        var params = [ "NativeControls.createActionSheet",options ];
+    var options = {};
+    
+    if(actionSheetTitle != null)
+    {
+        options.title = actionSheetTitle;
+    }
+    if(cancelButtonIndex != null)
+    {
+        options.cancelButtonIndex = cancelButtonIndex;
+    }
+    if(destructiveButtonIndex != null)
+    {
+        options.destructiveButtonIndex = destructiveButtonIndex;
+    }
+    
+    var params = [ "NativeControls.createActionSheet",options ];
     for (var i = 0; i < buttonTitles.length; i++)
-        {
+    {
         params.push(buttonTitles[i]);
     }
     cordova.exec.apply(this, params);
-       
-        this.actionSheetDelegate = {};
-        return this.actionSheetDelegate;
+    
+    this.actionSheetDelegate = {};
+    return this.actionSheetDelegate;
 }
- 
- 
+
+
 NativeControls.prototype._onActionSheetDismissed = function(index)
 {
-        this.actionSheetDelegate.onActionSheetDismissed(index);
+    this.actionSheetDelegate.onActionSheetDismissed(index);
 }
- 
- 
- 
+
+
+
 NativeControls.prototype.setStatusBarVisibilty = function(bHide)
 {
-        cordova.exec("StatusBar.setHidden",bHide);
+    cordova.exec("StatusBar.setHidden",bHide);
 }
- 
- 
+
+
 if(!window.plugins)
-  window.plugins = {};
- 
- window.plugins.nativeControls = new NativeControls();
+window.plugins = {};
+
+window.plugins.nativeControls = new NativeControls();
