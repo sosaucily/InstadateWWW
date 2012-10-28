@@ -121,8 +121,8 @@ function onBodyLoad()
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
 	//comment these 3 out for mobile, uncomment for desktop browser testing
-	$.mobile.showPageLoadingMsg();
-	custom_update_loading_image();
-	auto_geo();
+	//$.mobile.showPageLoadingMsg();
+	//custom_update_loading_image();
+	//auto_geo();
 	
 }
