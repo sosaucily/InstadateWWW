@@ -1,6 +1,12 @@
 /* Background Image */
 .ui-body-c {
-	background: url(../images/body-background.jpg) repeat;
+	background: url(../images/body-background-2x.jpg);
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	.ui-body-c {
+		background: url(../images/body-background-2x.jpg);
+	}
 }
 
 /* Wrapper */
