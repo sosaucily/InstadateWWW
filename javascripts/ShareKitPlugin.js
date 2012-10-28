@@ -55,9 +55,7 @@ ShareKitPlugin.prototype.facebookConnect = function()
 
 ShareKitPlugin.prototype.shareToFacebook = function( message, url)
 {
-	
     cordova.exec(null, null, "ShareKitPlugin", "shareToFacebook", [message, url] );
-    
 };
 
 ShareKitPlugin.prototype.shareToTwitter = function( message, url)

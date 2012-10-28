@@ -19,32 +19,23 @@ function authAndShareToTwitter(isLoggedIn, message, url) {
 }
 
 function showSharingSheet(message, subject, body, url) {
-	console.log("Running showSharingSheet function");
 	var buttons = ["Share to Facebook", "Share to Twitter", "Share via Email", "Cancel"];
 	var delegate = window.plugins.nativeControls.createActionSheet(buttons, null, 3, 3);
 	delegate.onActionSheetDismissed = function(index)
 	{
 		switch(index) {
 			case 0:
-				console.log("Sharing to Facebook!");
 				window.plugins.shareKit.isLoggedToFacebook(function(isLoggedIn) { authAndShareToFacebook(isLoggedIn, message, url); });
-				console.log("Done");
 				break;
 			case 1:
-				console.log("Sharing to Twitter!");
 				window.plugins.shareKit.isLoggedToTwitter(function(isLoggedIn) { authAndShareToTwitter(isLoggedIn, message, url); });
-				console.log("Done");
 				break;
 			case 2:
-				console.log("Sharing via Email!");
 				window.plugins.shareKit.shareToMail(subject, body + url);
-				console.log("Done");
 				break;
 			default:
-				console.log("Cancelling sharing function");
 		}
 	};
-	console.log("showSharingSheet function complete");
 }
 
 function onPhotoURISuccess() {

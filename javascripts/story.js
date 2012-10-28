@@ -1,17 +1,19 @@
 $(function() {
 	$('#refreshButton').click(function() {
-		console.log("Refresh!");
 		fadeOutForRefresh();
 	});
 	$('#addr_search').keyup(function() { 
 		window.addr_search = $('#addr_search').val();
-		console.log("updated addr to " + window.addr_search);
 		$('#lat_search').val("");
 		$('#lng_search').val("");
+		window.city = ""; //Empty loading city for rebuild upon next search
 		$('#zip_search').val(window.addr_search);
 	});
 	$( '#story' ).live( 'pageshow',function(event, ui){
 		$('#refreshButton').click();
+		if (window.city == null || window.city == ""){
+			updateCity(); //Get the city and fill it into #loading_city when complete
+		}
 	});
 		
 });
@@ -35,8 +37,6 @@ initialize_story = function(options) {
 	expanded = 0;
 	
 	Story.current_story = options;
-	console.log ("Testing Story Manager");
-	console.log (Story.current_story);	
 
 	Story.chapter_html = new Array(3);
 	Story.chapter_details_html = new Array(3);
@@ -90,12 +90,10 @@ initialize_story = function(options) {
 		switch(curr_chap_data.system)
 		{
 			case "yelp":
-				console.log("yelp activity");
 				api_image_class = "yelp_image";
 				api_image_url = "images/yelp_logo_100x50-2x.png"
 				break;
 			case "upcoming":
-				console.log("upcoming activity");
 				api_image_class = "upcoming_image";
 				api_image_url = "images/upcoming_logo2.gif"
 				break;
@@ -185,9 +183,7 @@ initialize_story = function(options) {
 
 function fadeOutForRefresh() {
 	if (!window.last_submit_failed) {
-		console.log("expanded is " + expanded);
 		if (expanded != 0) { //One of the chapters is already expanded..  
-			console.log("fixing chapter " + expanded-1  + " with name " + '#' + Story.chapter_ids[expanded-1]);
 			$('#chapter_'+expanded+'_details').slideToggle(0);
 			$('#' + Story.chapter_ids[expanded-1]).toggle(600, function() {
 				$.mobile.showPageLoadingMsg();
@@ -197,14 +193,12 @@ function fadeOutForRefresh() {
 		else {
 			for(chap = 0; chap < Story.chapter_ids.length; chap++) {
 				if(chap == 2) {
-					console.log("toggling chapter " + chap + " and reloading");
 					$('#' + Story.chapter_ids[chap]).toggle(600, function() {
 						$.mobile.showPageLoadingMsg();
 						custom_update_loading_image(window.city);
 					});
 				}
 				else {
-					console.log("toggling chapter " + chap);
 					$('#' + Story.chapter_ids[chap]).toggle(400, function() {
 					});
 				}
@@ -244,7 +238,6 @@ function getAllMapsOnce(lat,lng,elem)
 		if (Story.map_loaded[chap] == 0)
 		{
 			Story.map_loaded[chap] = 1;
-			console.log("Getting map for chap: " + (chap+1));
 			map_src = getMap(lat,lng,"themap" + (chap+1) );
 			$('#themap' + (chap+1)).html('<img src="' + map_src + '" style="width:288px;height:87" />');
 		}
@@ -289,7 +282,6 @@ function submit_story() {
 	var zip = window.zip_search;
 
 	var valid_zip = /^\d{5}(-\d{4})?(?!-)$/
-	console.log ("location is " + user_location);
 	try {
 		if (user_location.match(valid_zip)==null){
 			if (zip == "" || zip == null){
@@ -315,7 +307,6 @@ function submit_story() {
 			window.oysterConfig["data_server_url"] = "http://theoyster.me/";
 		}
 	}
-	console.log ("Getting data from backend url: " + window.oysterConfig["data_server_url"] + "story/create" );
 
 	$.ajax({
 	  type: 'post',
@@ -336,7 +327,6 @@ function submit_story() {
 		$('#story_list').html('');
 		Story = {};
 		json_data = jQuery.parseJSON(data);
-		console.log("initializing story");
 		initialize_story(jQuery.parseJSON(data));
 		$.mobile.hidePageLoadingMsg();
 	  },
