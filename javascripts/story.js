@@ -51,7 +51,7 @@ initialize_story = function(options) {
 					curr_chap_data.image_url = "images/story_pics/" + curr_chap_data.category_image_name;
 				}
 				else{
-					curr_chap_data.image_url = "http://theoyster.me/images/default-activity-icon.png";
+					curr_chap_data.image_url = "http://oyster.me/images/default-activity-icon.png";
 					//BUG: Why pull this off the web instead of using local??	
 				}
 			}
@@ -304,7 +304,7 @@ function submit_story() {
 
 		if (window.oysterConfig["data_server_url"].match(/oyster\.app/)) {
 			//Changing the backend URL because we're on an iphone or iphone simulator
-			window.oysterConfig["data_server_url"] = "http://theoyster.me/";
+			window.oysterConfig["data_server_url"] = "http://oyster.me/";
 		}
 	}
 

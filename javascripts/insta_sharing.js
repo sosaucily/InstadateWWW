@@ -51,14 +51,14 @@ $(function() {
 		var message = window.search_city + " is my Oyster - ";
 		var subject = window.search_city + " is my Oyster";
 		var body = "Check out what I just planned with Oyster - ";
-		var url = "theoyster.me/stories/" + Story.current_story.story_id;
+		var url = "oyster.me/stories/" + Story.current_story.story_id;
 		showSharingSheet(message, subject, body, url);
 	});
 	$('#share_home_screen').click(function() {
 		var message = "Check out Oyster, the best way to discover new things near you - ";
 		var subject = "Check out Oyster";
 		var body = "Oyster helps you find new and interesting things to do near you. Get it now - ";
-		var url = "theoyster.me";
+		var url = "oyster.me";
 		showSharingSheet(message, subject, body, url);
 	});
 });
