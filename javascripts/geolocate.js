@@ -57,16 +57,18 @@ function geo_success(position, callback) {
 			// + " - " + city;
 			$('#loading_city').html(window.city);
 			$('#loading_city').hide().html(window.city).fadeIn(600);
-		  	callback();
+		  	callback && callback();
 		}
     }
   );
 }
 
 function updateCity() { //Get the city and fill it into #loading_city when complete
-	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	geocoder = new google.maps.Geocoder();
-	geocoder.geocode({'location':latlng},
+	
+	// var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	// geocoder = new google.maps.Geocoder();
+	console.log("Getting geo for location: " + window.addr_search);
+	geocoder.geocode({'address':window.addr_search},
     	function(results, status) {
 			if (status != "OK") {
 				console.log ("Error retrieving geolocation - " + status);
@@ -119,8 +121,8 @@ function onBodyLoad()
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
 	//comment these 3 out for mobile, uncomment for desktop browser testing
-	// $.mobile.showPageLoadingMsg();
-	// custom_update_loading_image();
-	// auto_geo();
+	//$.mobile.showPageLoadingMsg();
+	//custom_update_loading_image();
+	//auto_geo();
 	
 }
