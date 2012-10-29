@@ -17,6 +17,63 @@ $(function() {
 	});
 		
 });
+
+getConnectionType = function() {
+    var networkState = navigator.network.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.NONE]     = 'No network connection';
+
+	return (networkState);
+}
+
+showOffileSpinner = function() {
+	window.oysterStatus = "offline";
+	
+	$('#refreshButton').hide();
+
+	$('#customizeButton').hide();
+	
+	$.mobile.showPageLoadingMsg();
+	
+	$('.ui-loader').removeClass('ui-loader-default');
+	$('.ui-loader').addClass('ui-loader-verbose');
+	$('.ui-loader h1').html("Waiting until a data connection is detected...");	
+}
+
+comeBackOnline = function(){
+	if (window.oysterStatus == "offline") {
+		
+		window.oysterStatus = "online";
+	
+		$.mobile.hidePageLoadingMsg();
+	
+		$('#refreshButton').show();
+
+		$('#customizeButton').show();
+
+		if (typeof google === 'undefined') {
+			//dynamicallyReloadGoogle();
+			location.reload();
+		} else {
+			fadeOutForRefresh();
+		}
+	}
+}
+
+dynamicallyReloadGoogle = function(){
+	var fileref=document.createElement('script');
+	fileref.setAttribute("type","text/javascript");
+	fileref.setAttribute("src", "http://maps.googleapis.com/maps/api/js?key = AIzaSyCloHHOTgUAwKqVVpovHVzGioPQ8RkQeTY&sensor=false");
+	document.getElementsByTagName("head")[0].appendChild(fileref);
+}
+
 	
 var Story = {};
 
@@ -182,7 +239,7 @@ initialize_story = function(options) {
 }
 
 function fadeOutForRefresh() {
-	if (!window.last_submit_failed) {
+	if (!window.lastSubmitFailed) {
 		if (expanded != 0) { //One of the chapters is already expanded..  
 			$('#chapter_'+expanded+'_details').slideToggle(0);
 			$('#' + Story.chapter_ids[expanded-1]).toggle(600, function() {
@@ -313,7 +370,7 @@ function submit_story() {
 	  headers: { "cache-control": "no-cache" },
 	  data: $("#story_form").serialize(),
 	  error: function(data) {
-		window.last_submit_failed = true;
+		window.lastSubmitFailed = true;
 		$.mobile.hidePageLoadingMsg();
 		if (data.responseText.length > 0) {
 			show_error(data.responseText);
@@ -323,7 +380,7 @@ function submit_story() {
 		}
 	  },
 	  success: function(data) {
-		window.last_submit_failed = false;
+		window.lastSubmitFailed = false;
 		$('#story_list').html('');
 		Story = {};
 		json_data = jQuery.parseJSON(data);

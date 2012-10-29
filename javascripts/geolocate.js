@@ -16,7 +16,16 @@ function auto_geo() {
 }
 	
 function afterGeoSuccess(position) {
-	geo_success(position, submit_story);
+	if (typeof google === 'undefined') {
+		
+		dynamicallyReloadGoogle();		
+		
+		setTimeout(function() {			
+			geo_success(position, submit_story);
+		}, 2000);
+	} else {
+		geo_success(position, submit_story);
+	}
 }
 
 function geo_success(position, callback) {
@@ -117,8 +126,10 @@ function onBodyLoad()
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
 	//comment these 3 out for mobile, uncomment for desktop browser testing
-	//$.mobile.showPageLoadingMsg();
-	//custom_update_loading_image();
-	//auto_geo();
+	if (window.oysterDesktop) {
+		$.mobile.showPageLoadingMsg();
+		custom_update_loading_image();
+		auto_geo();
+	}
 	
 }

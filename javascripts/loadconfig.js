@@ -9,3 +9,7 @@ if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
   	data_server_url:document.baseURI
   }
 }
+
+window.oysterDesktop = false;
+window.oysterStatus = "online";
+window.lastSubmitFailed = true;
