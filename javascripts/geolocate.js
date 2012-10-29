@@ -64,10 +64,6 @@ function geo_success(position, callback) {
 }
 
 function updateCity() { //Get the city and fill it into #loading_city when complete
-	
-	// var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-	// geocoder = new google.maps.Geocoder();
-	console.log("Getting geo for location: " + window.addr_search);
 	geocoder.geocode({'address':window.addr_search},
     	function(results, status) {
 			if (status != "OK") {
