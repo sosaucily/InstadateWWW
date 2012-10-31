@@ -242,9 +242,8 @@
 }
 
 .chapter_details {
-/*	background-color: #B5E4FA;*/
-	display:none;
-	padding: 10px 10px 10px 10px
+	display: none;
+	padding: 10px 10px 10px 10px;
 }
 
 .chapter_div {
