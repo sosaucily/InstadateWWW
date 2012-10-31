@@ -190,7 +190,7 @@ function getAllMapsOnce(lat,lng,elem)
 		{
 			Story.map_loaded[chap] = 1;
 			map_src = getMap(lat,lng,"themap" + (chap+1) );
-			$('#themap' + (chap+1)).html('<img src="' + map_src + '" style="width:288px;height:87" />');
+			$('#themap' + (chap+1)).html('<img src="' + map_src + '" style="width:300px;" />');
 		}
 	}
 }
