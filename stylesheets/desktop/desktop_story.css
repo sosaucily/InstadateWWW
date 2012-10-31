@@ -1,0 +1,337 @@
+
+.insta-zip-col1 {
+  display: inline-block;
+  width: 26%;
+  margin-right:0px;
+  margin-left:10px;
+}
+
+.insta-zip-col2 {
+  display: inline-block;
+  width: 50%;
+  margin-left:3px;
+  margin-right:-15px;
+}
+
+.story_date_when {
+	display: inline-block;
+	font-size: 16px;
+	line-height: 1.4;
+	font-weight: normal;
+	float: left;
+	margin-top: 24px;
+	padding-bottom: 20px;
+}
+
+.day_part_controls .ui-controlgroup-controls {
+	width: 150px;
+}
+
+.story_distance_label {
+	display: inline-block;
+	font-size: 16px;
+	line-height: 1.4;
+	font-weight: normal;
+	float: left;
+	margin-top: 18px;
+	padding-bottom: 20px;
+}
+
+.story_date_datebox {
+	display:inline-block;
+	width:65%;
+    margin-left:10px;
+}
+
+/* Page Header */
+.story-header {
+  margin-bottom: 0px;
+}
+
+/* Page Footer */
+.story-footer {
+  margin-top: 0px;
+  /*box-shadow: 0px -2px 10px rgba(0,0,0,0.5);  */
+}
+.chapter-footer h4 {
+  font-family: 'Terminal Dosis', sans-serif;
+  font-weight: 700;
+}
+
+#customizeButton {
+	margin-top: 5px;
+}
+
+#customizeButton .ui-btn-inner {
+	height: 10px;
+	padding-left: 10px;
+}
+
+#refreshButton {
+	margin-top: 5px;
+}
+
+#refreshButton .ui-btn-inner {
+	height: 10px;
+	padding-left: 10px;
+}
+
+.indoor {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.activity {
+  height: 100px;
+  margin: 0px 0px 0px 0px;
+  padding: 12px 23px 12px 23px;
+}
+
+.activity-see-evening {
+  background-image:url(../../images/evening-see-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+.activity-see-day {
+  background-image:url(../../images/day-see-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+.activity-eat-day {
+  background-image:url(../../images/day-eat-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+.activity-eat-evening {
+  background-image:url(../../images/evening-eat-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+.activity-eat {
+  background-image:url(../../images/evening-eat-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+.activity-do {
+  background-image:url(../../images/evening-do-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+.activity-see {
+  background-image:url(../../images/evening-see-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+.activity-do-day {
+  background-image:url(../../images/day-do-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+.activity-do-evening {
+  background-image:url(../../images/evening-do-2x.jpg);
+  background-size: 320px 126px;
+  background-repeat: no-repeat;
+}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .activity-see-evening {
+    background-image:url(../../images/evening-see-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+  .activity-see-day {
+    background-image:url(../../images/day-see-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+  .activity-eat-day {
+    background-image:url(../../images/day-eat-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+  .activity-eat-evening {
+    background-image:url(../../images/evening-eat-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+  .activity-eat {
+    background-image:url(../../images/evening-eat-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+  .activity-do {
+    background-image:url(../../images/evening-do-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+  .activity-see {
+    background-image:url(../../images/evening-see-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+  .activity-do-day {
+    background-image:url(../../images/day-do-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+  .activity-do-evening {
+    background-image:url(../../images/evening-do-2x.jpg);
+    background-size: 320px 126px;
+	background-repeat: no-repeat;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+	#yelp_image {
+		width:50px;
+		height:25px;
+		margin:-6px 0 -8px 0px;
+	}
+	#upcoming_image {
+		width:125px;
+		height:20px;
+		margin:-6px 0 -6px 0px;
+	}
+	#business_image_url {
+		width:70px;
+		height:70px;
+	}
+}
+
+#yelp_image {
+	width:50px;
+	height:25px;
+	margin:-6px 0 -8px 0px;
+}
+#upcoming_image {
+	width:125px;
+	height:20px;
+	margin:-6px 0 -6px 0px;
+}
+#business_image_url {
+	width:70px;
+	height:70px;
+}
+
+.chapter {
+  height: 100px;
+  padding: 10px 6px 0px 2px;
+  /*background:black;*/
+  color: white;
+  opacity:1.0;
+  filter:alpha(opacity=100);
+
+  span img {
+    /*opacity:1.0; This doesn't work */
+    filter:alpha(opacity=100);
+    width: 80px;
+    height: 80px;
+  }
+
+  .chapter-header {
+    font-family: "Georgia", Georgia, serif;
+    font-size: 16px;
+    opacity: 1.0;
+
+  }
+
+  .chapter-details {
+    font-size: 13px;
+  }
+}
+
+.chapter_details {
+/*	background-color: #B5E4FA;*/
+	display:none;
+	padding: 10px 10px 10px 10px
+}
+
+.chapter_div {
+	width:290px;
+	height: 76px;
+	display: inline-block;
+}
+
+.chapter_business_img {
+	padding: 5px 10px 0px 3px;
+	display: inline-block;
+}
+
+.chapter_business_img img {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AFAFAF;
+}
+
+.chapter_business_text {
+	display: inline-block;
+	width: 180px;
+	vertical-align: top;
+}
+
+.chapter_arrow {
+	display: inline-block;
+	vertical-align: top;
+  /*background-size: 320px 124px;*/
+}
+
+.chapter_arrow_img {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin-top: 33px;
+	margin-left: 3px;
+}
+
+
+.story_list {
+  margin: 0px 0px 0px 0px;
+  padding: 20px 30px 0px 30px;
+  color: #FFF;
+  text-shadow: none;
+/*  background: url(../../images/body-background-2x.jpg);*/
+}
+
+div.loading-invisible {
+  display:none;
+}
+
+div.loading-visible {
+  z-index: 100;
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  text-align:center;
+  background:#fff;
+  opacity:.75;
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+  padding-top:25%;
+}
+
+/* Google Map */
+
+/*.the_map {
+  width: 100%;
+  height: 87px;
+}*/
+
+.phone_link:link { text-decoration:none; color:#000000;}
+.phone_link:visited { text-decoration:none; color:#000000;}
+.phone_link:hover { text-decoration:none; color:#000000;}
+.phone_link:active { text-decoration:none; color:#000000;}
+
+.addr_link:link { text-decoration:none; color:#000000;}
+.addr_link:visited { text-decoration:none; color:#000000;}
+.addr_link:hover { text-decoration:none; color:#000000;}
+.addr_link:active { text-decoration:none; color:#000000;}
+
+.api_link:link { text-decoration:none; color:#000000;}
+.api_link:visited { text-decoration:none; color:#000000;}
+.api_link:hover { text-decoration:none; color:#000000;}
+.api_link:active { text-decoration:none; color:#000000;}
+
