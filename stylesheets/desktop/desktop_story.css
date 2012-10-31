@@ -89,47 +89,47 @@
 
 .activity-see-evening {
   background-image:url(../../images/evening-see-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 .activity-see-day {
   background-image:url(../../images/day-see-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 .activity-eat-day {
   background-image:url(../../images/day-eat-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 .activity-eat-evening {
   background-image:url(../../images/evening-eat-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 .activity-eat {
   background-image:url(../../images/evening-eat-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 .activity-do {
   background-image:url(../../images/evening-do-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 .activity-see {
   background-image:url(../../images/evening-see-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 .activity-do-day {
   background-image:url(../../images/day-do-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 .activity-do-evening {
   background-image:url(../../images/evening-do-2x.jpg);
-  background-size: 320px 125px;
+  background-size: 320px 126px;
   background-repeat: no-repeat;
 }
 
@@ -137,47 +137,47 @@
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .activity-see-evening {
     background-image:url(../../images/evening-see-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
   .activity-see-day {
     background-image:url(../../images/day-see-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
   .activity-eat-day {
     background-image:url(../../images/day-eat-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
   .activity-eat-evening {
     background-image:url(../../images/evening-eat-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
   .activity-eat {
     background-image:url(../../images/evening-eat-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
   .activity-do {
     background-image:url(../../images/evening-do-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
   .activity-see {
     background-image:url(../../images/evening-see-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
   .activity-do-day {
     background-image:url(../../images/day-do-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
   .activity-do-evening {
     background-image:url(../../images/evening-do-2x.jpg);
-    background-size: 320px 125px;
+    background-size: 320px 126px;
 	background-repeat: no-repeat;
   }
 }
@@ -241,6 +241,12 @@
   }
 }
 
+.chapter_details {
+/*	background-color: #B5E4FA;*/
+	display:none;
+	padding: 10px 10px 10px 10px
+}
+
 .chapter_div {
 	width:290px;
 	height: 76px;
@@ -274,16 +280,17 @@
 	display: inline-block;
 	width: 15px;
 	height: 15px;
-	margin-top: 32px;
-	margin-left: 1px;
+	margin-top: 33px;
+	margin-left: 3px;
 }
 
 
 .story_list {
   margin: 0px 0px 0px 0px;
-  padding: 20px 0px 0px 30px;
+  padding: 20px 30px 0px 30px;
   color: #FFF;
   text-shadow: none;
+/*  background: url(../../images/body-background-2x.jpg);*/
 }
 
 div.loading-invisible {
@@ -308,10 +315,10 @@ div.loading-visible {
 
 /* Google Map */
 
-.the_map {
+/*.the_map {
   width: 100%;
   height: 87px;
-}
+}*/
 
 .phone_link:link { text-decoration:none; color:#000000;}
 .phone_link:visited { text-decoration:none; color:#000000;}
