@@ -1,10 +1,10 @@
 function authAndShareToFacebook(isLoggedIn, message, url) {
 	if (isLoggedIn) {
 		window.plugins.shareKit.facebookConnect();
-		window.plugins.shareKit.shareToFacebook(message + "http://" + url, null);
+		window.plugins.shareKit.shareToFacebook(message + url, null);
 	}
 	else {
-		window.plugins.shareKit.shareToFacebook(message + "http://" + url, null);
+		window.plugins.shareKit.shareToFacebook(message + url, null);
 	}
 }
 
