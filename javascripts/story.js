@@ -156,7 +156,7 @@ initialize_story = function(options) {
 				break;
 		}
 
-		var map_url = "http://maps.google.com/maps?q=" + curr_chap_data.latitude + "," + curr_chap_data.longitude
+		var map_url = "http://maps.apple.com/maps?q=" + curr_chap_data.latitude + "," + curr_chap_data.longitude
 		
 
 		var data = {
