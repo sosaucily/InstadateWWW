@@ -10,6 +10,6 @@ if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
   }
 }
 
-window.oysterDesktop = false;
+window.oysterDesktop = true;
 window.oysterStatus = "online";
 window.lastSubmitFailed = true;
