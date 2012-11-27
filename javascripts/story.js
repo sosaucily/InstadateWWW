@@ -321,7 +321,7 @@ function getMap(lat,lng, elementid)
 	        };
     var map = new google.maps.Map(document.getElementById(elementid), myOptions);
 	*/
-	return ("http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=17&markers=color:blue%7Clabel:S%7C" + lat + "," + lng + "&size=576x174&sensor=false&key=AIzaSyCloHHOTgUAwKqVVpovHVzGioPQ8RkQeTY");
+	return ("http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=17&markers=color:0059A9%7C" + lat + "," + lng + "&size=576x174&sensor=false&key=AIzaSyCloHHOTgUAwKqVVpovHVzGioPQ8RkQeTY");
 }
 
 function custom_update_loading_image(city) {
